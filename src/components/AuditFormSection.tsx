@@ -89,7 +89,7 @@ export function AuditFormSection() {
               We've Got It
             </h3>
             <p className="text-slate-600 max-w-sm mx-auto">
-              We'll review your local maps layout and call you within 24 hours.
+              We'll review your local maps layout and call you within 4 hours.
             </p>
           </div>
         ) : (
@@ -122,7 +122,7 @@ export function AuditFormSection() {
             <InputField
               label="Phone Number"
               type="tel"
-              placeholder="(555) 123-4567"
+              placeholder="07365519615"
               error={errors.phone_number?.message}
               {...register("phone_number")}
             />

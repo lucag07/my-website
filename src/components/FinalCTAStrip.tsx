@@ -5,7 +5,7 @@ interface FinalCTAStripProps {
   phoneNumber?: string;
 }
 
-export function FinalCTAStrip({ phoneNumber = "+44 07365519615" }: FinalCTAStripProps) {
+export function FinalCTAStrip({ phoneNumber = "07365519615" }: FinalCTAStripProps) {
   const { ref, isVisible } = useScrollReveal();
 
   return (

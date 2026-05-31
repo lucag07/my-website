@@ -5,7 +5,7 @@ interface StickyHeaderProps {
   phoneNumber?: string;
 }
 
-export function StickyHeader({ phoneNumber = "+44 07365519615" }: StickyHeaderProps) {
+export function StickyHeader({ phoneNumber = "07365519615" }: StickyHeaderProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

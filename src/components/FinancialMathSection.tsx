@@ -31,7 +31,7 @@ export function FinancialMathSection() {
 
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-              The Math Is Simple
+              The Maths Is Simple
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
               One single job pays for this service for months. The rest is pure

@@ -112,11 +112,11 @@ export function FAQSection() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
-              href="tel:+4407365519615" 
+              href="tel:07365519615"
               className="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors w-full sm:w-auto justify-center"
             >
               <Phone className="w-4 h-4" />
-              +44 07365519615
+              07365519615
             </a>
             <a 
               href="mailto:luca@tasklumas.com" 
