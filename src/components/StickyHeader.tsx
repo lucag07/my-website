@@ -27,9 +27,9 @@ export function StickyHeader({ phoneNumber = "+44 07365519615" }: StickyHeaderPr
       }`}
     >
       <div className="w-full border-b border-slate-800 bg-slate-900/95" style={{ backdropFilter: "blur(12px)" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between">
           <div className="flex items-center">
-            <img src="/logo.png" alt="Tasklumas Logo" className="h-8 w-auto object-contain" />
+            <img src="/logo.png" alt="Tasklumas Logo" className="h-16 w-auto object-contain bg-white p-1 rounded" />
           </div>
 
           <div className="flex items-center gap-3">
