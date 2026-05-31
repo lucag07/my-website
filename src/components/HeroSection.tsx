@@ -28,7 +28,7 @@ export function HeroSection() {
             </div>
             <div className="relative flex flex-col items-center">
               <div className="bg-amber-400 rounded-full p-3 shadow-lg shadow-amber-400/30">
-                <MapPin className="w-10 h-10 text-slate-900" strokeWidth={2.5} />
+                <MapPin className="w-10 h-10 text-slate-900" strokeWidth={2.5} aria-hidden="true" />
               </div>
               <div className="mt-2 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                 #1
@@ -38,6 +38,7 @@ export function HeroSection() {
                 height="24"
                 className="text-slate-600"
                 viewBox="0 0 2 24"
+                aria-hidden="true"
               >
                 <line
                   x1="1"
