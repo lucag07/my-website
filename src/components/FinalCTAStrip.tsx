@@ -1,11 +1,11 @@
-import { Phone } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 interface FinalCTAStripProps {
   phoneNumber?: string;
 }
 
-export function FinalCTAStrip({ phoneNumber = "(555) 000-0000" }: FinalCTAStripProps) {
+export function FinalCTAStrip({ phoneNumber = "+44 07365519615" }: FinalCTAStripProps) {
   const { ref, isVisible } = useScrollReveal();
 
   return (
@@ -26,11 +26,18 @@ export function FinalCTAStrip({ phoneNumber = "(555) 000-0000" }: FinalCTAStripP
             Get Your Free Local Ranking Audit
           </a>
           <a
-            href={`tel:${phoneNumber.replace(/[^0-9]/g, "")}`}
+            href={`tel:${phoneNumber.replace(/[^0-9+]/g, "")}`}
             className="w-full sm:w-auto flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-lg px-8 py-4 rounded-lg border border-slate-700 transition-all duration-200"
           >
             <Phone className="w-5 h-5" />
             {phoneNumber}
+          </a>
+          <a
+            href="mailto:luca@tasklumas.com"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-lg px-8 py-4 rounded-lg border border-slate-700 transition-all duration-200"
+          >
+            <Mail className="w-5 h-5" />
+            luca@tasklumas.com
           </a>
         </div>
       </div>

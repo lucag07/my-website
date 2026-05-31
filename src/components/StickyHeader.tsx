@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { Phone, MapPin } from "lucide-react";
+import { Phone, MapPin, Mail } from "lucide-react";
 
 interface StickyHeaderProps {
   phoneNumber?: string;
 }
 
-export function StickyHeader({ phoneNumber = "(555) 000-0000" }: StickyHeaderProps) {
+export function StickyHeader({ phoneNumber = "+44 07365519615" }: StickyHeaderProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -33,13 +33,22 @@ export function StickyHeader({ phoneNumber = "(555) 000-0000" }: StickyHeaderPro
               <MapPin className="w-4 h-4 text-slate-900" strokeWidth={2.5} />
             </div>
             <span className="text-white font-bold text-sm hidden sm:inline">
-              LocalRank
+              Tasklumas
             </span>
           </div>
 
           <div className="flex items-center gap-3">
             <a
-              href={`tel:${phoneNumber.replace(/[^0-9]/g, "")}`}
+              href="mailto:luca@tasklumas.com"
+              className="hidden md:flex items-center gap-2 text-slate-300 hover:text-white transition-colors mr-2"
+            >
+              <Mail className="w-4 h-4" />
+              <span className="text-sm font-medium hidden lg:inline">
+                luca@tasklumas.com
+              </span>
+            </a>
+            <a
+              href={`tel:${phoneNumber.replace(/[^0-9+]/g, "")}`}
               className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
             >
               <Phone className="w-4 h-4" />
