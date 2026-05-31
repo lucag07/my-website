@@ -26,8 +26,8 @@ export function StickyHeader({ phoneNumber = "(555) 000-0000" }: StickyHeaderPro
           : "-translate-y-full opacity-0"
       }`}
     >
-      <div className="w-full" style={{ backdropFilter: "blur(12px)" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between border-b border-slate-800 bg-slate-900/95">
+      <div className="w-full border-b border-slate-800 bg-slate-900/95" style={{ backdropFilter: "blur(12px)" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-amber-400 flex items-center justify-center">
               <MapPin className="w-4 h-4 text-slate-900" strokeWidth={2.5} />
