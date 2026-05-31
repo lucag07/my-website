@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Phone, MapPin, Mail } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 
 interface StickyHeaderProps {
   phoneNumber?: string;
@@ -28,13 +28,8 @@ export function StickyHeader({ phoneNumber = "+44 07365519615" }: StickyHeaderPr
     >
       <div className="w-full border-b border-slate-800 bg-slate-900/95" style={{ backdropFilter: "blur(12px)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-amber-400 flex items-center justify-center">
-              <MapPin className="w-4 h-4 text-slate-900" strokeWidth={2.5} />
-            </div>
-            <span className="text-white font-bold text-sm hidden sm:inline">
-              Tasklumas
-            </span>
+          <div className="flex items-center">
+            <img src="/logo.png" alt="Tasklumas Logo" className="h-8 w-auto object-contain" />
           </div>
 
           <div className="flex items-center gap-3">
