@@ -5,7 +5,7 @@ const metrics = [
   { value: 100, suffix: "+", label: "Local Markets Analyzed" },
   { value: 90, suffix: "-Day", label: "Average to Results" },
   { value: 3, suffix: " Top", label: "Positions Targeted" },
-  { value: 4, suffix: "-Hour", label: "Response Time" },
+  { value: 24, suffix: "-Hour", label: "Response Time" },
 ];
 
 function AnimatedCounter({

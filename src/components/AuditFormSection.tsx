@@ -1,68 +1,91 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { CheckCircle } from "lucide-react";
+import { useState, FormEvent } from "react";
+import { CheckCircle, Check } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import { useScrollReveal } from "../hooks/useScrollReveal";
-import { InputField } from "./ui/InputField";
-import { SelectField } from "./ui/SelectField";
 
-const trades = [
-  { value: "Roofer", label: "Roofer" },
-  { value: "Plumber", label: "Plumber" },
-  { value: "Landscaper", label: "Landscaper" },
-  { value: "HVAC", label: "HVAC" },
-  { value: "Other", label: "Other" },
-];
-
-const formSchema = z.object({
-  full_name: z.string().min(2, "Name must be at least 2 characters"),
-  business_name: z.string().min(2, "Business name must be at least 2 characters"),
-  phone_number: z.string().min(10, "Please enter a valid phone number"),
-  trade: z.string().min(1, "Please select a trade"),
-  target_city: z.string().min(2, "City must be at least 2 characters"),
-});
-
-type FormData = z.infer<typeof formSchema>;
+const trades = ["Roofer", "Plumber", "Landscaper", "HVAC", "Other"];
 
 export function AuditFormSection() {
   const { ref, isVisible } = useScrollReveal();
   const [submitted, setSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      full_name: "",
-      business_name: "",
-      phone_number: "",
-      trade: "",
-      target_city: "",
-    },
+  const [loading, setLoading] = useState(false);
+  const [shakeField, setShakeField] = useState<string | null>(null);
+  const [form, setForm] = useState({
+    full_name: "",
+    business_name: "",
+    phone_number: "",
+    trade: "",
+    target_city: "",
   });
 
-  const onSubmit = async (data: FormData) => {
-    setSubmitError(null);
-    
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setShakeField(null);
+  };
+
+  const validateField = (name: string, value: string): boolean => {
+    if (!value.trim()) return false;
+    if (name === "phone_number") {
+      const digits = value.replace(/\D/g, "");
+      return digits.length >= 10;
+    }
+    return true;
+  };
+
+  const getProgress = (): number => {
+    const fields = Object.keys(form);
+    const filled = fields.filter((field) =>
+      validateField(field, form[field as keyof typeof form])
+    );
+    return Math.round((filled.length / fields.length) * 100);
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    for (const [key, value] of Object.entries(form)) {
+      if (!validateField(key, value)) {
+        setShakeField(key);
+        setTimeout(() => setShakeField(null), 500);
+        return;
+      }
+    }
+
+    setLoading(true);
+
     const { error } = await supabase.from("contact_submissions").insert({
-      full_name: data.full_name,
-      business_name: data.business_name,
-      phone_number: data.phone_number,
-      trade: data.trade,
-      target_city: data.target_city,
+      full_name: form.full_name,
+      business_name: form.business_name,
+      phone_number: form.phone_number,
+      trade: form.trade,
+      target_city: form.target_city,
     });
 
-    if (error) {
-      console.error("Supabase insert error:", error);
-      setSubmitError("Something went wrong. Please try again or contact us directly.");
-    } else {
+    setLoading(false);
+
+    if (!error) {
       setSubmitted(true);
     }
+  };
+
+  const inputClasses = (fieldName: string): string => {
+    const base =
+      "w-full px-4 py-3 rounded-lg border bg-white text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200";
+    const isValid = validateField(
+      fieldName,
+      form[fieldName as keyof typeof form]
+    );
+    const shake = shakeField === fieldName ? "animate-shake" : "";
+
+    if (shakeField === fieldName) {
+      return `${base} border-red-400 ${shake}`;
+    }
+    if (isValid) {
+      return `${base} border-emerald-400 focus:ring-emerald-400`;
+    }
+    return `${base} border-stone-300 focus:ring-amber-400`;
   };
 
   return (
@@ -93,67 +116,143 @@ export function AuditFormSection() {
             </p>
           </div>
         ) : (
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="bg-white rounded-2xl p-6 md:p-8 border border-stone-200 shadow-sm space-y-5"
-          >
-            {submitError && (
-              <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm font-medium" role="alert">
-                {submitError}
+          <>
+            <div className="mb-4">
+              <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
+                <span>Form Progress</span>
+                <span>{getProgress()}%</span>
               </div>
-            )}
-            
-            <InputField
-              label="Full Name"
-              type="text"
-              placeholder="John Smith"
-              error={errors.full_name?.message}
-              {...register("full_name")}
-            />
+              <div className="h-1.5 bg-stone-200 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-amber-400 transition-all duration-300 ease-out"
+                  style={{ width: `${getProgress()}%` }}
+                />
+              </div>
+            </div>
 
-            <InputField
-              label="Business Name"
-              type="text"
-              placeholder="Smith Roofing LLC"
-              error={errors.business_name?.message}
-              {...register("business_name")}
-            />
-
-            <InputField
-              label="Phone Number"
-              type="tel"
-              placeholder="07365519615"
-              error={errors.phone_number?.message}
-              {...register("phone_number")}
-            />
-
-            <SelectField
-              label="Trade"
-              options={trades}
-              error={errors.trade?.message}
-              {...register("trade")}
-            />
-
-            <InputField
-              label="Target City / Area"
-              type="text"
-              placeholder="Dallas, TX"
-              error={errors.target_city?.message}
-              {...register("target_city")}
-            />
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-amber-400 hover:bg-amber-300 disabled:bg-amber-300 disabled:cursor-not-allowed text-slate-900 font-bold text-lg py-4 rounded-lg shadow-lg shadow-amber-400/25 transition-all duration-200 hover:shadow-amber-400/40"
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white rounded-2xl p-6 md:p-8 border border-stone-200 shadow-sm space-y-5"
             >
-              {isSubmitting ? "Sending..." : "Get My Free Audit"}
-            </button>
+              <div className="relative">
+                <label className="block text-sm font-semibold text-slate-700 mb-1.5">
+                  Full Name
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="full_name"
+                    required
+                    value={form.full_name}
+                    onChange={handleChange}
+                    placeholder="John Smith"
+                    className={inputClasses("full_name")}
+                  />
+                  {validateField("full_name", form.full_name) && (
+                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                  )}
+                </div>
+              </div>
 
-            <p className="text-center text-xs text-stone-400">
-              No spam. No sales pitch. Just direct answers.
-            </p>
-          </form>
+              <div className="relative">
+                <label className="block text-sm font-semibold text-slate-700 mb-1.5">
+                  Business Name
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="business_name"
+                    required
+                    value={form.business_name}
+                    onChange={handleChange}
+                    placeholder="Smith Roofing LLC"
+                    className={inputClasses("business_name")}
+                  />
+                  {validateField("business_name", form.business_name) && (
+                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                  )}
+                </div>
+              </div>
+
+              <div className="relative">
+                <label className="block text-sm font-semibold text-slate-700 mb-1.5">
+                  Phone Number
+                </label>
+                <div className="relative">
+                  <input
+                    type="tel"
+                    name="phone_number"
+                    required
+                    value={form.phone_number}
+                    onChange={handleChange}
+                    placeholder="07365519615"
+                    className={inputClasses("phone_number")}
+                  />
+                  {validateField("phone_number", form.phone_number) && (
+                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                  )}
+                </div>
+              </div>
+
+              <div className="relative">
+                <label className="block text-sm font-semibold text-slate-700 mb-1.5">
+                  Trade
+                </label>
+                <select
+                  name="trade"
+                  required
+                  value={form.trade}
+                  onChange={handleChange}
+                  className={inputClasses("trade")}
+                >
+                  <option value="" disabled>
+                    Select your trade
+                  </option>
+                  {trades.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
+                {validateField("trade", form.trade) && (
+                  <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                )}
+              </div>
+
+              <div className="relative">
+                <label className="block text-sm font-semibold text-slate-700 mb-1.5">
+                  Target City / Area
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="target_city"
+                    required
+                    value={form.target_city}
+                    onChange={handleChange}
+                    placeholder="Dallas, TX"
+                    className={inputClasses("target_city")}
+                  />
+                  {validateField("target_city", form.target_city) && (
+                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                  )}
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-amber-400 hover:bg-amber-300 disabled:bg-amber-300 disabled:cursor-not-allowed text-slate-900 font-bold text-lg py-4 rounded-lg shadow-lg shadow-amber-400/25 transition-all duration-200 hover:shadow-amber-400/40"
+              >
+                {loading ? "Sending..." : "Get My Free Audit"}
+              </button>
+
+              <div className="flex items-center justify-center gap-2 text-xs text-stone-400">
+                <CheckCircle className="w-3.5 h-3.5" />
+                <span>We typically respond within 4 hours</span>
+              </div>
+            </form>
+          </>
         )}
       </div>
     </section>
