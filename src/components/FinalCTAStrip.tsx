@@ -1,6 +1,11 @@
+import { Phone } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-export function FinalCTAStrip() {
+interface FinalCTAStripProps {
+  phoneNumber?: string;
+}
+
+export function FinalCTAStrip({ phoneNumber = "(555) 000-0000" }: FinalCTAStripProps) {
   const { ref, isVisible } = useScrollReveal();
 
   return (
@@ -13,12 +18,21 @@ export function FinalCTAStrip() {
           Your competitors at the top of Google Maps aren't waiting.{" "}
           <span className="text-amber-400">Neither should you.</span>
         </p>
-        <a
-          href="#audit-form"
-          className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold text-lg px-8 py-4 rounded-lg shadow-lg shadow-amber-400/25 transition-all duration-200 hover:shadow-amber-400/40 hover:scale-105"
-        >
-          Get Your Free Local Ranking Audit
-        </a>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="#audit-form"
+            className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold text-lg px-8 py-4 rounded-lg shadow-lg shadow-amber-400/25 transition-all duration-200 hover:shadow-amber-400/40 hover:scale-105"
+          >
+            Get Your Free Local Ranking Audit
+          </a>
+          <a
+            href={`tel:${phoneNumber.replace(/[^0-9]/g, "")}`}
+            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-lg px-8 py-4 rounded-lg border border-slate-700 transition-all duration-200"
+          >
+            <Phone className="w-5 h-5" />
+            {phoneNumber}
+          </a>
+        </div>
       </div>
     </section>
   );
