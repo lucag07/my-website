@@ -230,7 +230,7 @@ export function AuditFormSection() {
                     required
                     value={form.target_city}
                     onChange={handleChange}
-                    placeholder="Dallas, TX"
+                    placeholder="Edinburgh"
                     className={inputClasses("target_city")}
                   />
                   {validateField("target_city", form.target_city) && (

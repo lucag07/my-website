@@ -350,8 +350,30 @@ flowchart TD
 
 ---
 
+## Local development (ports & preview)
+
+This project is pinned to **port 5174** in `vite.config.ts` (`strictPort: true`) so it does not silently move when another Vite app (e.g. Antigravity) uses the default **5173**.
+
+| Situation | What to do |
+|-----------|------------|
+| **Preview shows blank / favourites** | Open **`http://localhost:5174/`** (full URL with `http://`). Cursor’s preview may still point at 5173. |
+| **Want this site on 5173** | Stop the other dev server (`Ctrl+C` in that terminal), or run `kill -9 $(lsof -t -i:5173)`, then remove or change the `server.port` in `vite.config.ts` and restart `npm run dev`. |
+| **Both apps at once** | Keep Antigravity on 5173 and Tasklumas on 5174 — no change needed. |
+| **`Port 5174 is already in use`** | Something else owns 5174: `kill -9 $(lsof -t -i:5174)` or pick another port in `vite.config.ts`. |
+
+**Restart after config changes:** `Ctrl+C`, then `npm run dev`. Terminal should show:
+
+```text
+➜  Local:   http://localhost:5174/
+```
+
+**Production preview** (built files): `npm run build && npm run preview` — also uses port 5174 per config.
+
+---
+
 ## Changelog
 
 | Date | Change |
 |------|--------|
+| 2026-06-03 | Added local dev port notes; Vite pinned to 5174 |
 | 2026-06-03 | Initial plan from frontend review brainstorm |

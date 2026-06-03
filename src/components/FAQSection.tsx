@@ -6,27 +6,77 @@ const faqs = [
   {
     question: "How long until I see results?",
     answer:
-      "Most businesses start seeing movement within 30-45 days. Top 3 rankings typically hit between days 60-90. We don't promise overnight success because that's not how Google works, but we do promise results within 90 days or you get a full refund.",
+      "Most businesses start seeing movement within 30–45 days. Top 3 Map Pack positions typically land between days 60–90. We don't promise overnight wins because that's not how Google's local algorithm works—but we do guarantee Top 3 placement in your agreed target areas within 90 days, or you get a full refund.",
+  },
+  {
+    question: "How much does this cost—and is it worth it vs Google Ads?",
+    answer:
+      "Pricing depends on your trade, competition, and how many postcodes you want to dominate. On the audit call we'll give you a straight number—no vague 'packages.' Most clients find that one extra booked job per month pays for the service; unlike PPC, you're not paying every time someone clicks. Map Pack visibility compounds: once you're in the Top 3, you keep earning calls without burning budget on ads.",
+  },
+  {
+    question: "Am I locked into a long contract?",
+    answer:
+      "No. We work month-to-month after an initial onboarding period because we're judged on rankings, not paperwork. If we're not delivering movement in the first 30–45 days, we'll tell you honestly on your review call—not hide behind a 12-month tie-in. The 90-day guarantee is about results, not trapping you in fine print.",
+  },
+  {
+    question: 'What exactly does "Top 3" mean for my area?',
+    answer:
+      "It means your Google Business Profile appears in the Map Pack—the three listings with the map—when a real customer in your target area searches your trade (e.g. 'emergency plumber near me' or 'roofer in [your town]'). We define the exact keywords and postcodes on the audit so there's no ambiguity: you'll know what we're aiming for before you commit.",
   },
   {
     question: "Do you work with my trade?",
     answer:
-      "We specialize in local service businesses: roofers, plumbers, landscapers, HVAC technicians, electricians, painters, and general contractors. If you serve a local geographic area and your customers search for you on Google Maps, we can help.",
+      "We specialise in local service businesses: roofers, plumbers, landscapers, HVAC, electricians, painters, and general contractors. If customers find you on Google Maps and you serve a defined geographic area—not nationwide e-commerce—we can usually help. If your niche is unusual, the free audit will tell you straight whether we're a fit.",
+  },
+  {
+    question: "I've been burned by SEO agencies before—why should I trust you?",
+    answer:
+      "Fair question. Most agencies sell reports and backlinks; we focus only on local Map Pack rankings you can verify yourself—search your trade on your phone in your town and see where you sit. No vanity metrics. You get a named point of contact, clear targets, and a money-back guarantee tied to Top 3 placement, not 'increased traffic.' If we don't think we can win in your market, we'll say no on the audit call.",
+  },
+  {
+    question: "Is this black hat? Will Google suspend my profile?",
+    answer:
+      "Everything we do aligns with Google Business Profile guidelines: accurate categories, service areas, reviews earned properly, consistent NAP, and relevant content—not spam links or fake locations. Risky tactics get profiles suspended; we don't use them. Your reputation on Google is an asset—we treat it that way.",
+  },
+  {
+    question: "How is this different from Checkatrade, Bark, or shared lead sites?",
+    answer:
+      "Shared lead platforms sell the same enquiry to several trades—you're racing to quote and paying per lead whether you win the job or not. Map Pack rankings send exclusive calls to your business: the customer chose you from Google and dialled your number. You're building an asset you own, not renting access to someone else's marketplace.",
+  },
+  {
+    question: "What happens on the free audit call—hard sell?",
+    answer:
+      "No script, no pressure. We'll look at where you rank today, who owns the Top 3 in your area, and what's blocking you—usually category gaps, weak service areas, review velocity, or profile trust signals. You'll leave with a clear picture even if we don't work together. The call is about fit and honesty, not closing on the spot.",
+  },
+  {
+    question: "What if a competitor is already #1 in my town?",
+    answer:
+      "Someone will hold those spots—that's exactly why inaction costs you. We analyse why they're winning (reviews, categories, proximity, content) and whether the gap is closable in 90 days. Sometimes the leader is beatable quickly; sometimes we recommend a neighbouring postcode first. You'll get a realistic plan, not a promise we can't keep.",
   },
   {
     question: "What if I'm already ranking?",
     answer:
-      "Great! We can help you dominate more areas. Most businesses rank well in their immediate city but miss out on neighboring towns where customers also search. We expand your visibility across multiple target locations.",
+      "Good start—but most businesses only rank in their immediate town while missing neighbouring areas where the same customers search. We expand coverage across multiple postcodes and tighten your profile so you hold Top 3 in more high-intent searches, not just one lucky keyword.",
+  },
+  {
+    question: "Do I need hundreds of 5-star reviews first?",
+    answer:
+      "No. Reviews matter, but we've ranked businesses with fewer reviews than the market leader by fixing profile relevance, service-area setup, and category precision. We'll tell you if review velocity is your bottleneck and give you a simple system to earn reviews ethically—never fake or incentivised against Google's rules.",
+  },
+  {
+    question: "Can you target multiple towns, or just one postcode?",
+    answer:
+      "Multiple towns are possible when competition and your operational radius support it. Each extra area adds work and may affect pricing—we scope that on the audit so you're not paying for postcodes you can't actually serve. Quality beats spraying everywhere Google won't trust.",
   },
   {
     question: "What's the catch with the guarantee?",
     answer:
-      "No catch. If your business isn't in the Top 3 on Google Maps for your target keywords and locations within 90 days, you get 100% of your money back. We only work with businesses we're confident we can rank, so we're betting on our success too.",
+      "No catch. If you're not in the Top 3 for the agreed keywords and locations within 90 days, you get 100% of your money back. We only take clients we're confident we can rank—that's why we audit first. The guarantee exists because we stake our fee on the same outcome you care about: phone calls from Google Maps.",
   },
   {
     question: "Do I need to do anything on my end?",
     answer:
-      "Minimal involvement. We need access to your Google Business Profile (or we help you set one up), and occasionally we'll need your input on specific details about your service area or business operations. Beyond that, we handle the heavy lifting.",
+      "Minimal. Grant access to your Google Business Profile (or we'll help you claim one), confirm your real service areas, and occasionally approve photos or answer a quick question about how you operate. No daily logins, no content calendars for you to manage—we handle the technical and optimisation work.",
   },
 ];
 
@@ -56,7 +106,7 @@ function FAQItem({
       </button>
       <div
         className={`overflow-hidden transition-all duration-200 ${
-          isOpen ? "max-h-96" : "max-h-0"
+          isOpen ? "max-h-[32rem]" : "max-h-0"
         }`}
       >
         <p className="px-5 pb-4 text-slate-600 leading-relaxed">{answer}</p>

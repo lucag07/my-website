@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { X, Phone } from "lucide-react";
 import { supabase } from "../lib/supabase";
 
-const PHONE_NUMBER = "+44 7365519615";
+const PHONE_NUMBER = "+44 7442 116785";
 
 export function ExitIntentModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -103,7 +103,7 @@ export function ExitIntentModal() {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="(555) 123-4567"
+                  placeholder="07442 116785"
                   className="w-full px-4 py-3 rounded-lg border border-stone-300 bg-white text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent"
                   required
                 />
