@@ -16,8 +16,8 @@ const pillars = [
   },
   {
     icon: Shield,
-    title: "Our Money-Where-Our-Mouth-Is Guarantee",
-    description: "90-day absolute performance shield.",
+    title: "We Work Until You're in the Top 3",
+    description: "If you're not ranked in 90 days, we keep working for free until you are.",
   },
 ];
 

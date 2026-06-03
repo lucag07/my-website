@@ -133,12 +133,10 @@ export function AuditFormSection() {
       >
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Get Your Free Plumbing Ranking Audit
+            See Who's Beating You on Google Maps
           </h2>
           <p className="text-slate-600 leading-relaxed">
-            We'll manually check where your plumbing business ranks on Google
-            Maps right now and show you the exact visibility gaps. Walk away with
-            clear answers even if you never work with us.
+            Fill in your details and we'll send you a free personal video — we show you exactly where you rank right now, who's above you, why they're winning, and what's costing you calls. No meeting needed.
           </p>
         </div>
 
@@ -146,10 +144,10 @@ export function AuditFormSection() {
           <div className="text-center py-12 bg-white rounded-2xl border border-stone-200 shadow-sm">
             <CheckCircle className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-slate-900 mb-2">
-              We've Got It
+              You're on the list
             </h3>
             <p className="text-slate-600 max-w-sm mx-auto">
-              We'll review your local maps layout and call you within 4 hours.
+              We'll record your personal ranking video and send it to you within 24 hours.
             </p>
           </div>
         ) : (
@@ -307,7 +305,7 @@ export function AuditFormSection() {
                 disabled={loading}
                 className="w-full bg-amber-400 hover:bg-amber-300 disabled:bg-amber-300 disabled:cursor-not-allowed text-slate-900 font-bold text-lg py-4 rounded-lg shadow-lg shadow-amber-400/25 transition-all duration-200 hover:shadow-amber-400/40"
               >
-                {loading ? "Sending..." : "Get My Free Plumbing Audit"}
+                {loading ? "Sending..." : "Send Me the Free Video"}
               </button>
 
               <div className="flex items-center justify-center gap-2 text-xs text-stone-400">

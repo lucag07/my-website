@@ -4,23 +4,23 @@ import { CTA_FREE_AUDIT } from "../content/site";
 const steps = [
   {
     number: "1",
-    title: "Short intro call",
-    detail: "10 mins max. We just listen.",
+    title: "Fill in the form",
+    detail: "Takes 2 minutes. Just your name, business, and the area you want to rank in.",
   },
   {
     number: "2",
-    title: "No sales pitch, ever",
-    detail: "We share what we see. That's it.",
+    title: "We send you a free personal video",
+    detail: "We record a short Loom showing exactly where you rank, who's above you, and why. No fluff.",
   },
   {
     number: "3",
-    title: "Clear, direct recommendations",
-    detail: "You get honest answers about your local visibility.",
+    title: "Book a call if you want to fix it",
+    detail: "If the video makes sense and you want to move forward, book a quick call. No pressure if not.",
   },
   {
     number: "4",
-    title: "You decide what to do next",
-    detail: "No pressure. No follow-up spam. Your call.",
+    title: "We build a plan together",
+    detail: "We go through what needs fixing, tell you what we'd do, and you decide if it's a fit.",
   },
 ];
 

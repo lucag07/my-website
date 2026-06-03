@@ -10,6 +10,7 @@ import { AuditFormSection } from "./components/AuditFormSection";
 import { FinalCTAStrip } from "./components/FinalCTAStrip";
 import { StickyHeader } from "./components/StickyHeader";
 import { ExitIntentModal } from "./components/ExitIntentModal";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <ProcessSequence />
       <AuditFormSection />
       <FinalCTAStrip />
+      <Footer />
     </div>
   );
 }

@@ -2,10 +2,10 @@ import { useEffect, useState, useRef } from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const metrics = [
-  { value: 100, suffix: "+", label: "Plumbing Markets Analyzed" },
+  { value: 70, suffix: "%", label: "of Local Calls Go to the Top 3" },
   { value: 90, suffix: "-Day", label: "Average to Results" },
   { value: 3, suffix: " Top", label: "Positions Targeted" },
-  { value: 24, suffix: "-Hour", label: "Response Time" },
+  { value: 4, suffix: "-Hour", label: "Response Time" },
 ];
 
 function AnimatedCounter({

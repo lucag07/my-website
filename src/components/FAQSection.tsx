@@ -6,17 +6,17 @@ const faqs = [
   {
     question: "How long until I see results?",
     answer:
-      "Most plumbing businesses start seeing movement within 30–45 days. Top 3 Map Pack positions typically land between days 60–90. We don't promise overnight wins because that's not how Google's local algorithm works—but we do guarantee Top 3 placement in your agreed target areas within 90 days, or you get a full refund.",
+      "Most plumbing businesses start seeing movement within 30–45 days. Top 3 Map Pack positions typically land between days 60–90. We don't promise overnight wins because that's not how Google's local algorithm works. If you're not in the Top 3 within 90 days, we keep working for free until you are.",
   },
   {
     question: "How much does this cost—and is it worth it vs Google Ads?",
     answer:
-      "Pricing depends on your local competition, how many postcodes you want to dominate, and whether you're emergency, residential, or commercial. On the audit call we'll give you a straight number—no vague 'packages.' Most plumbers find that one extra booked job per month pays for the service; unlike PPC, you're not paying every time someone clicks. Map Pack visibility compounds: once you're in the Top 3, you keep earning calls without burning budget on ads.",
+      "Pricing depends on your local competition, how many postcodes you want to dominate, and whether you're emergency, residential, or commercial. After you watch your free video, if you want to move forward we'll give you a straight number — no vague 'packages.' Most plumbers find that one extra booked job per month pays for the service; unlike PPC, you're not paying every time someone clicks. Map Pack visibility compounds: once you're in the Top 3, you keep earning calls without burning budget on ads.",
   },
   {
     question: "Am I locked into a long contract?",
     answer:
-      "No. We work month-to-month after an initial onboarding period because we're judged on rankings, not paperwork. If we're not delivering movement in the first 30–45 days, we'll tell you honestly on your review call—not hide behind a 12-month tie-in. The 90-day guarantee is about results, not trapping you in fine print.",
+      "No. We work month-to-month after an initial onboarding period because we're judged on rankings, not paperwork. If we're not delivering movement in the first 30–45 days, we'll tell you honestly on your review call—not hide behind a 12-month tie-in.",
   },
   {
     question: 'What exactly does "Top 3" mean for my area?',
@@ -26,12 +26,12 @@ const faqs = [
   {
     question: "Do you work with trades other than plumbing?",
     answer:
-      "No. We only work with plumbing businesses—heating engineers, bathroom fitters, drainage specialists, and general plumbers who serve a defined local area. That focus is why we can guarantee Map Pack results for your niche. If you're not a plumber, we're not the right fit.",
+      "No. We only work with plumbing businesses—heating engineers, bathroom fitters, drainage specialists, and general plumbers who serve a defined local area. That focus is what lets us deliver strong Map Pack results for your niche. If you're not a plumber, we're not the right fit.",
   },
   {
     question: "I've been burned by SEO agencies before—why should I trust you?",
     answer:
-      "Fair question. Most agencies sell reports and backlinks; we focus only on local Map Pack rankings you can verify yourself—search 'plumber near me' on your phone in your town and see where you sit. No vanity metrics. You get a named point of contact, clear targets, and a money-back guarantee tied to Top 3 placement, not 'increased traffic.' If we don't think we can win in your market, we'll say no on the audit call.",
+      "Fair question. Most agencies sell reports and backlinks; we focus only on local Map Pack rankings you can verify yourself — search 'plumber near me' on your phone in your town and see where you sit. No vanity metrics. You get a named point of contact and clear targets tied to Top 3 placement, not 'increased traffic.' If we don't think we can win in your market, we'll say so in your video.",
   },
   {
     question: "Is this black hat? Will Google suspend my profile?",
@@ -44,9 +44,9 @@ const faqs = [
       "Shared lead platforms sell the same enquiry to several plumbers—you're racing to quote and paying per lead whether you win the job or not. Map Pack rankings send exclusive calls to your business: the customer chose you from Google and dialled your number. You're building an asset you own, not renting access to someone else's marketplace.",
   },
   {
-    question: "What happens on the free audit call—hard sell?",
+    question: "What do I actually get when I sign up?",
     answer:
-      "No script, no pressure. We'll look at where you rank today, who owns the Top 3 in your area, and what's blocking you—usually category gaps, weak service areas, review velocity, or profile trust signals. You'll leave with a clear picture even if we don't work together. The call is about fit and honesty, not closing on the spot.",
+      "We record a personal video — usually 4–5 minutes — and send it straight to you. No call, no meeting. We walk through where you rank right now, show you exactly who's above you and why they're winning, and explain what's blocking your calls. You'll leave with a clear picture of what needs fixing, even if you never work with us.",
   },
   {
     question: "What if a competitor is already #1 in my town?",
@@ -69,9 +69,9 @@ const faqs = [
       "Multiple towns are possible when competition and your operational radius support it. Each extra area adds work and may affect pricing—we scope that on the audit so you're not paying for postcodes you can't actually serve. Quality beats spraying everywhere Google won't trust.",
   },
   {
-    question: "What's the catch with the guarantee?",
+    question: "What's the deal if I don't rank in 90 days?",
     answer:
-      "No catch. If you're not in the Top 3 for the agreed keywords and locations within 90 days, you get 100% of your money back. We only take clients we're confident we can rank—that's why we audit first. The guarantee exists because we stake our fee on the same outcome you care about: phone calls from Google Maps.",
+      "We keep working for free until you're in the Top 3. Simple as that. We only take clients we're confident we can rank—that's why we audit first.",
   },
   {
     question: "Do I need to do anything on my end?",
