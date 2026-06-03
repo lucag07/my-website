@@ -8,8 +8,12 @@ import {
   isPhonePossible,
   getPhoneValidationError,
 } from "../lib/phone/validate";
-
-const trades = ["Roofer", "Plumber", "Landscaper", "HVAC", "Other"];
+import {
+  isValidEmail,
+  normalizeEmail,
+  getEmailValidationError,
+} from "../lib/email/validate";
+import { FORM_EMAIL_PLACEHOLDER } from "../content/contact";
 
 export function AuditFormSection() {
   const { ref, isVisible } = useScrollReveal();
@@ -17,25 +21,30 @@ export function AuditFormSection() {
   const [loading, setLoading] = useState(false);
   const [shakeField, setShakeField] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
   const [form, setForm] = useState({
     full_name: "",
     business_name: "",
     phone_number: "",
-    trade: "",
+    email: "",
     target_city: "",
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setShakeField(null);
+    if (e.target.name === "email") {
+      setEmailError(null);
+    }
   };
 
   const validateField = (name: string, value: string): boolean => {
     if (!value.trim()) return false;
     if (name === "phone_number") {
       return isPhonePossible(value);
+    }
+    if (name === "email") {
+      return isValidEmail(value);
     }
     return true;
   };
@@ -57,6 +66,9 @@ export function AuditFormSection() {
         if (key === "phone_number") {
           setPhoneError(getPhoneValidationError(value));
         }
+        if (key === "email") {
+          setEmailError(getEmailValidationError(value));
+        }
         setTimeout(() => setShakeField(null), 500);
         return;
       }
@@ -70,13 +82,21 @@ export function AuditFormSection() {
       return;
     }
 
+    const email = normalizeEmail(form.email);
+    if (!isValidEmail(email)) {
+      setShakeField("email");
+      setEmailError(getEmailValidationError(form.email));
+      setTimeout(() => setShakeField(null), 500);
+      return;
+    }
+
     setLoading(true);
 
     const { error } = await supabase.from("contact_submissions").insert({
       full_name: form.full_name,
       business_name: form.business_name,
       phone_number: phoneE164,
-      trade: form.trade,
+      email,
       target_city: form.target_city,
     });
 
@@ -152,11 +172,15 @@ export function AuditFormSection() {
               className="bg-white rounded-2xl p-6 md:p-8 border border-stone-200 shadow-sm space-y-5"
             >
               <div className="relative">
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">
+                <label
+                  htmlFor="audit-full-name"
+                  className="block text-sm font-semibold text-slate-700 mb-1.5"
+                >
                   Full Name
                 </label>
                 <div className="relative">
                   <input
+                    id="audit-full-name"
                     type="text"
                     name="full_name"
                     required
@@ -172,11 +196,15 @@ export function AuditFormSection() {
               </div>
 
               <div className="relative">
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">
+                <label
+                  htmlFor="audit-business-name"
+                  className="block text-sm font-semibold text-slate-700 mb-1.5"
+                >
                   Business Name
                 </label>
                 <div className="relative">
                   <input
+                    id="audit-business-name"
                     type="text"
                     name="business_name"
                     required
@@ -214,36 +242,52 @@ export function AuditFormSection() {
               </div>
 
               <div className="relative">
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-                  Trade
-                </label>
-                <select
-                  name="trade"
-                  required
-                  value={form.trade}
-                  onChange={handleChange}
-                  className={inputClasses("trade")}
+                <label
+                  htmlFor="audit-email"
+                  className="block text-sm font-semibold text-slate-700 mb-1.5"
                 >
-                  <option value="" disabled>
-                    Select your trade
-                  </option>
-                  {trades.map((t) => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
-                {validateField("trade", form.trade) && (
-                  <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                  Email Address
+                </label>
+                <div className="relative">
+                  <input
+                    id="audit-email"
+                    type="email"
+                    name="email"
+                    required
+                    autoComplete="email"
+                    inputMode="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder={FORM_EMAIL_PLACEHOLDER}
+                    aria-invalid={!!emailError}
+                    aria-describedby={emailError ? "audit-email-error" : undefined}
+                    className={inputClasses("email")}
+                  />
+                  {validateField("email", form.email) && (
+                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                  )}
+                </div>
+                {emailError && (
+                  <p
+                    id="audit-email-error"
+                    className="mt-1.5 text-xs text-red-600"
+                    role="alert"
+                  >
+                    {emailError}
+                  </p>
                 )}
               </div>
 
               <div className="relative">
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">
+                <label
+                  htmlFor="audit-target-city"
+                  className="block text-sm font-semibold text-slate-700 mb-1.5"
+                >
                   Target City / Area
                 </label>
                 <div className="relative">
                   <input
+                    id="audit-target-city"
                     type="text"
                     name="target_city"
                     required

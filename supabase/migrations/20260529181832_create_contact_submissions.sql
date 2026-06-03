@@ -7,7 +7,7 @@
       - `full_name` (text, not null) - Submitter's full name
       - `business_name` (text, not null) - Name of the business
       - `phone_number` (text, not null) - Contact phone number
-      - `trade` (text, not null) - Business trade category (Roofer, Plumber, Landscaper, HVAC, Other)
+      - `email` (text, not null) - Contact email address
       - `target_city` (text, not null) - Target city/area for local ranking
       - `created_at` (timestamptz, default now()) - Submission timestamp
 
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS contact_submissions (
   full_name text NOT NULL,
   business_name text NOT NULL,
   phone_number text NOT NULL,
-  trade text NOT NULL,
+  email text NOT NULL,
   target_city text NOT NULL,
   created_at timestamptz DEFAULT now()
 );

@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { X, Phone } from "lucide-react";
 import { supabase } from "../lib/supabase";
-import { BUSINESS_PHONE_DISPLAY } from "../content/contact";
+import {
+  BUSINESS_PHONE_DISPLAY,
+  EXIT_INTENT_EMAIL_PLACEHOLDER,
+} from "../content/contact";
 import { PhoneInputField } from "./phone/PhoneInput";
 import {
   toE164,
@@ -67,7 +70,7 @@ export function ExitIntentModal() {
       full_name: "Exit Intent Lead",
       business_name: "Pending",
       phone_number: phoneE164,
-      trade: "Unknown",
+      email: EXIT_INTENT_EMAIL_PLACEHOLDER,
       target_city: "Unknown",
     });
 
