@@ -36,7 +36,7 @@ export function PhoneInputField({
   showValidCheck = true,
   compact = false,
   id: idProp,
-  helperText = "Your mobile number — we'll only use it to contact you about your audit.",
+  helperText = "Your mobile number — we'll only use it to contact you about your plumbing audit.",
   errorMessage,
   onBlur,
 }: PhoneInputFieldProps) {

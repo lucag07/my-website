@@ -126,8 +126,8 @@ export function ExitIntentModal() {
                 Don't Miss Out
               </h3>
               <p className="text-slate-600 text-sm">
-                Leave your phone number and we'll reach out with your free local
-                ranking analysis.
+                Leave your phone number and we'll reach out with your free
+                plumbing ranking analysis.
               </p>
             </div>
 

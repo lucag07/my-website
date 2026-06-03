@@ -62,9 +62,9 @@ export function RealityCheckSection() {
                 <div className="w-3 h-3 rounded-full bg-emerald-400" />
                 <span className="text-xs text-stone-400 ml-2">Local Map Pack</span>
               </div>
-              <MapPackCard rank={1} name="Pro Roofing Co." jobs={27} active />
-              <MapPackCard rank={2} name="Top Notch Plumbing" jobs={21} active />
-              <MapPackCard rank={3} name="Elite HVAC Services" jobs={18} active />
+              <MapPackCard rank={1} name="FastFlow Plumbing" jobs={27} active />
+              <MapPackCard rank={2} name="Premier Pipe Pros" jobs={21} active />
+              <MapPackCard rank={3} name="AquaFix Plumbing" jobs={18} active />
             </div>
             <div className="mt-3 flex items-center gap-2 text-emerald-600 text-sm font-medium">
               <Phone className="w-4 h-4" />
@@ -84,7 +84,7 @@ export function RealityCheckSection() {
                 <div className="w-3 h-3 rounded-full bg-stone-300" />
                 <span className="text-xs text-stone-400 ml-2">Scrolling past...</span>
               </div>
-              <MapPackCard rank={35} name="Your Business" jobs={0} active={false} />
+              <MapPackCard rank={35} name="Your Plumbing Business" jobs={0} active={false} />
               <div className="h-2 bg-stone-200 rounded" />
               <div className="h-2 bg-stone-200 rounded w-3/4" />
               <div className="h-2 bg-stone-200 rounded w-1/2" />
@@ -98,7 +98,7 @@ export function RealityCheckSection() {
 
         <div className="mt-12 max-w-3xl mx-auto text-center">
           <p className="text-lg md:text-xl text-slate-700 leading-relaxed">
-            When someone searches for a local pro near them, they call one of the
+            When someone searches for a plumber near them, they call one of the
             top 3. They never scroll to position 35.{" "}
             <span className="font-semibold text-slate-900">
               You already know this because you live it. Now let's fix it.

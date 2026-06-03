@@ -1,5 +1,6 @@
 import { MapPin } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { CTA_FREE_AUDIT } from "../content/site";
 
 export function HeroSection() {
   const { ref, isVisible } = useScrollReveal();
@@ -10,15 +11,18 @@ export function HeroSection() {
         ref={ref}
         className={`${isVisible ? "reveal-visible" : "reveal-base"} max-w-5xl mx-auto px-6 py-20 text-center`}
       >
+        <p className="text-sm font-semibold uppercase tracking-wider text-amber-400 mb-4">
+          For plumbers only
+        </p>
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
-          Top 3 on Google Maps in Your Area
+          Top 3 on Google Maps for Plumbers
           <br />
-          <span className="text-amber-400">— Or You Pay Nothing.</span>
+          <span className="text-amber-400">in Your Area — Or You Pay Nothing.</span>
         </h1>
 
         <p className="mt-6 text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-          We get your local business ringing with exclusive jobs in 90 days. If
-          we don't, every single penny comes back to you. No fine print.
+          We get your plumbing business ringing with exclusive jobs in 90 days.
+          If we don't, every single penny comes back to you. No fine print.
         </p>
 
         <div className="mt-12 flex justify-center">
@@ -59,7 +63,7 @@ export function HeroSection() {
             href="#audit-form"
             className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold text-lg px-8 py-4 rounded-lg shadow-lg shadow-amber-400/25 transition-all duration-200 hover:shadow-amber-400/40 hover:scale-105"
           >
-            Get Your Free Local Ranking Audit
+            {CTA_FREE_AUDIT}
           </a>
           <p className="mt-3 text-sm text-slate-400">
             Takes 10 minutes. No sales pitch. Just direct answers.

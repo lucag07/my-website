@@ -133,12 +133,12 @@ export function AuditFormSection() {
       >
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Get Your Free Local Ranking Audit
+            Get Your Free Plumbing Ranking Audit
           </h2>
           <p className="text-slate-600 leading-relaxed">
-            We'll manually check where your business stands right now and show
-            you the exact visibility gaps. Walk away with clear answers even if
-            you never work with us.
+            We'll manually check where your plumbing business ranks on Google
+            Maps right now and show you the exact visibility gaps. Walk away with
+            clear answers even if you never work with us.
           </p>
         </div>
 
@@ -210,7 +210,7 @@ export function AuditFormSection() {
                     required
                     value={form.business_name}
                     onChange={handleChange}
-                    placeholder="Smith Roofing LLC"
+                    placeholder="Smith Plumbing Ltd"
                     className={inputClasses("business_name")}
                   />
                   {validateField("business_name", form.business_name) && (
@@ -307,7 +307,7 @@ export function AuditFormSection() {
                 disabled={loading}
                 className="w-full bg-amber-400 hover:bg-amber-300 disabled:bg-amber-300 disabled:cursor-not-allowed text-slate-900 font-bold text-lg py-4 rounded-lg shadow-lg shadow-amber-400/25 transition-all duration-200 hover:shadow-amber-400/40"
               >
-                {loading ? "Sending..." : "Get My Free Audit"}
+                {loading ? "Sending..." : "Get My Free Plumbing Audit"}
               </button>
 
               <div className="flex items-center justify-center gap-2 text-xs text-stone-400">

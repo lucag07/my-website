@@ -1,5 +1,6 @@
 import { MapPin, TrendingUp, Phone } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { CTA_FREE_AUDIT } from "../content/site";
 
 const steps = [
   {
@@ -7,21 +8,21 @@ const steps = [
     number: "01",
     title: "We Map It Out Together",
     description:
-      "We choose the specific local areas that bring you the highest-paying jobs.",
+      "We choose the postcodes and search terms that bring you the highest-paying plumbing jobs.",
   },
   {
     icon: TrendingUp,
     number: "02",
     title: "We Get You Ranked",
     description:
-      "Our systems put your business in the Top 3 on Google Maps for those target areas.",
+      "Our systems put your plumbing business in the Top 3 on Google Maps for those target areas.",
   },
   {
     icon: Phone,
     number: "03",
     title: "Your Phone Rings",
     description:
-      "Direct, exclusive calls come straight to you. Not shared leads, not tire-kickers. Real jobs.",
+      "Direct, exclusive calls come straight to you. Not shared leads, not tyre-kickers. Real plumbing jobs.",
   },
 ];
 
@@ -62,7 +63,7 @@ export function HowItWorksSection() {
             href="#audit-form"
             className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-6 py-3 rounded-lg transition-all duration-200"
           >
-            Get Your Free Local Ranking Audit
+            {CTA_FREE_AUDIT}
           </a>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { CTA_FREE_AUDIT } from "../content/site";
 
 const steps = [
   {
@@ -65,7 +66,7 @@ export function ProcessSequence() {
             href="#audit-form"
             className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-6 py-3 rounded-lg transition-all duration-200"
           >
-            Get Your Free Local Ranking Audit
+            {CTA_FREE_AUDIT}
           </a>
         </div>
       </div>

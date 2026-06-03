@@ -34,8 +34,8 @@ export function FinancialMathSection() {
               The Maths Is Simple
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
-              One single job pays for this service for months. The rest is pure
-              profit for your pocket.{" "}
+              One emergency call-out or boiler install pays for this service for
+              months. The rest is pure profit for your pocket.{" "}
               <span className="font-semibold text-slate-900">
                 If we don't deliver the rankings, you get a 100% refund. The
                 risk is entirely on us.

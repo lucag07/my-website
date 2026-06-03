@@ -10,9 +10,9 @@ const pillars = [
   },
   {
     icon: Award,
-    title: "Proven Across Multiple Trades",
+    title: "Built for Plumbers Only",
     description:
-      "Successfully ranking roofers, plumbers, landscapers, and HVAC pros.",
+      "We rank plumbing businesses exclusively—emergency, residential, and commercial.",
   },
   {
     icon: Shield,

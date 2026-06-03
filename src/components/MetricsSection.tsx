@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const metrics = [
-  { value: 100, suffix: "+", label: "Local Markets Analyzed" },
+  { value: 100, suffix: "+", label: "Plumbing Markets Analyzed" },
   { value: 90, suffix: "-Day", label: "Average to Results" },
   { value: 3, suffix: " Top", label: "Positions Targeted" },
   { value: 24, suffix: "-Hour", label: "Response Time" },

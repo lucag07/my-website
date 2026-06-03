@@ -5,6 +5,7 @@ import {
   BUSINESS_PHONE_TEL,
   BUSINESS_EMAIL,
 } from "../content/contact";
+import { CTA_FREE_AUDIT_SHORT } from "../content/site";
 
 interface StickyHeaderProps {
   phoneNumber?: string;
@@ -62,7 +63,7 @@ export function StickyHeader({
               href="#audit-form"
               className="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold text-sm px-4 py-2 rounded-lg transition-all duration-200"
             >
-              Get Free Audit
+              {CTA_FREE_AUDIT_SHORT}
             </a>
           </div>
         </div>

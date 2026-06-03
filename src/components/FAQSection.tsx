@@ -6,12 +6,12 @@ const faqs = [
   {
     question: "How long until I see results?",
     answer:
-      "Most businesses start seeing movement within 30–45 days. Top 3 Map Pack positions typically land between days 60–90. We don't promise overnight wins because that's not how Google's local algorithm works—but we do guarantee Top 3 placement in your agreed target areas within 90 days, or you get a full refund.",
+      "Most plumbing businesses start seeing movement within 30–45 days. Top 3 Map Pack positions typically land between days 60–90. We don't promise overnight wins because that's not how Google's local algorithm works—but we do guarantee Top 3 placement in your agreed target areas within 90 days, or you get a full refund.",
   },
   {
     question: "How much does this cost—and is it worth it vs Google Ads?",
     answer:
-      "Pricing depends on your trade, competition, and how many postcodes you want to dominate. On the audit call we'll give you a straight number—no vague 'packages.' Most clients find that one extra booked job per month pays for the service; unlike PPC, you're not paying every time someone clicks. Map Pack visibility compounds: once you're in the Top 3, you keep earning calls without burning budget on ads.",
+      "Pricing depends on your local competition, how many postcodes you want to dominate, and whether you're emergency, residential, or commercial. On the audit call we'll give you a straight number—no vague 'packages.' Most plumbers find that one extra booked job per month pays for the service; unlike PPC, you're not paying every time someone clicks. Map Pack visibility compounds: once you're in the Top 3, you keep earning calls without burning budget on ads.",
   },
   {
     question: "Am I locked into a long contract?",
@@ -21,17 +21,17 @@ const faqs = [
   {
     question: 'What exactly does "Top 3" mean for my area?',
     answer:
-      "It means your Google Business Profile appears in the Map Pack—the three listings with the map—when a real customer in your target area searches your trade (e.g. 'emergency plumber near me' or 'roofer in [your town]'). We define the exact keywords and postcodes on the audit so there's no ambiguity: you'll know what we're aiming for before you commit.",
+      "It means your Google Business Profile appears in the Map Pack—the three listings with the map—when a real customer in your target area searches for a plumber (e.g. 'emergency plumber near me' or 'boiler repair [your town]'). We define the exact keywords and postcodes on the audit so there's no ambiguity: you'll know what we're aiming for before you commit.",
   },
   {
-    question: "Do you work with my trade?",
+    question: "Do you work with trades other than plumbing?",
     answer:
-      "We specialise in local service businesses: roofers, plumbers, landscapers, HVAC, electricians, painters, and general contractors. If customers find you on Google Maps and you serve a defined geographic area—not nationwide e-commerce—we can usually help. If your niche is unusual, the free audit will tell you straight whether we're a fit.",
+      "No. We only work with plumbing businesses—heating engineers, bathroom fitters, drainage specialists, and general plumbers who serve a defined local area. That focus is why we can guarantee Map Pack results for your niche. If you're not a plumber, we're not the right fit.",
   },
   {
     question: "I've been burned by SEO agencies before—why should I trust you?",
     answer:
-      "Fair question. Most agencies sell reports and backlinks; we focus only on local Map Pack rankings you can verify yourself—search your trade on your phone in your town and see where you sit. No vanity metrics. You get a named point of contact, clear targets, and a money-back guarantee tied to Top 3 placement, not 'increased traffic.' If we don't think we can win in your market, we'll say no on the audit call.",
+      "Fair question. Most agencies sell reports and backlinks; we focus only on local Map Pack rankings you can verify yourself—search 'plumber near me' on your phone in your town and see where you sit. No vanity metrics. You get a named point of contact, clear targets, and a money-back guarantee tied to Top 3 placement, not 'increased traffic.' If we don't think we can win in your market, we'll say no on the audit call.",
   },
   {
     question: "Is this black hat? Will Google suspend my profile?",
@@ -41,7 +41,7 @@ const faqs = [
   {
     question: "How is this different from Checkatrade, Bark, or shared lead sites?",
     answer:
-      "Shared lead platforms sell the same enquiry to several trades—you're racing to quote and paying per lead whether you win the job or not. Map Pack rankings send exclusive calls to your business: the customer chose you from Google and dialled your number. You're building an asset you own, not renting access to someone else's marketplace.",
+      "Shared lead platforms sell the same enquiry to several plumbers—you're racing to quote and paying per lead whether you win the job or not. Map Pack rankings send exclusive calls to your business: the customer chose you from Google and dialled your number. You're building an asset you own, not renting access to someone else's marketplace.",
   },
   {
     question: "What happens on the free audit call—hard sell?",
@@ -56,12 +56,12 @@ const faqs = [
   {
     question: "What if I'm already ranking?",
     answer:
-      "Good start—but most businesses only rank in their immediate town while missing neighbouring areas where the same customers search. We expand coverage across multiple postcodes and tighten your profile so you hold Top 3 in more high-intent searches, not just one lucky keyword.",
+      "Good start—but most plumbers only rank in their immediate town while missing neighbouring areas where the same customers search. We expand coverage across multiple postcodes and tighten your profile so you hold Top 3 in more high-intent searches, not just one lucky keyword.",
   },
   {
     question: "Do I need hundreds of 5-star reviews first?",
     answer:
-      "No. Reviews matter, but we've ranked businesses with fewer reviews than the market leader by fixing profile relevance, service-area setup, and category precision. We'll tell you if review velocity is your bottleneck and give you a simple system to earn reviews ethically—never fake or incentivised against Google's rules.",
+      "No. Reviews matter, but we've ranked plumbing businesses with fewer reviews than the market leader by fixing profile relevance, service-area setup, and category precision. We'll tell you if review velocity is your bottleneck and give you a simple system to earn reviews ethically—never fake or incentivised against Google's rules.",
   },
   {
     question: "Can you target multiple towns, or just one postcode?",
@@ -129,7 +129,7 @@ export function FAQSection() {
           Frequently Asked Questions
         </h2>
         <p className="text-slate-600 text-center mb-12">
-          Everything you need to know before getting started.
+          Straight answers for plumbing business owners before you apply.
         </p>
 
         <div className="space-y-4">
