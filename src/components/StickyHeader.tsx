@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import { Phone, Mail } from "lucide-react";
+import {
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_TEL,
+  BUSINESS_EMAIL,
+} from "../content/contact";
 
 interface StickyHeaderProps {
   phoneNumber?: string;
 }
 
-export function StickyHeader({ phoneNumber = "07365519615" }: StickyHeaderProps) {
+export function StickyHeader({
+  phoneNumber = BUSINESS_PHONE_DISPLAY,
+}: StickyHeaderProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -34,16 +41,16 @@ export function StickyHeader({ phoneNumber = "07365519615" }: StickyHeaderProps)
 
           <div className="flex items-center gap-3">
             <a
-              href="mailto:luca@tasklumas.com"
+              href={`mailto:${BUSINESS_EMAIL}`}
               className="hidden md:flex items-center gap-2 text-slate-300 hover:text-white transition-colors mr-2"
             >
               <Mail className="w-4 h-4" />
               <span className="text-sm font-medium hidden lg:inline">
-                luca@tasklumas.com
+                {BUSINESS_EMAIL}
               </span>
             </a>
             <a
-              href={`tel:${phoneNumber.replace(/[^0-9+]/g, "")}`}
+              href={`tel:${BUSINESS_PHONE_TEL.replace(/[^0-9+]/g, "")}`}
               className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
             >
               <Phone className="w-4 h-4" />

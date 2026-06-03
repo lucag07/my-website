@@ -2,6 +2,12 @@ import { useState, FormEvent } from "react";
 import { CheckCircle, Check } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { PhoneInputField } from "./phone/PhoneInput";
+import {
+  toE164,
+  isPhonePossible,
+  getPhoneValidationError,
+} from "../lib/phone/validate";
 
 const trades = ["Roofer", "Plumber", "Landscaper", "HVAC", "Other"];
 
@@ -10,6 +16,7 @@ export function AuditFormSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [shakeField, setShakeField] = useState<string | null>(null);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
   const [form, setForm] = useState({
     full_name: "",
     business_name: "",
@@ -28,8 +35,7 @@ export function AuditFormSection() {
   const validateField = (name: string, value: string): boolean => {
     if (!value.trim()) return false;
     if (name === "phone_number") {
-      const digits = value.replace(/\D/g, "");
-      return digits.length >= 10;
+      return isPhonePossible(value);
     }
     return true;
   };
@@ -48,9 +54,20 @@ export function AuditFormSection() {
     for (const [key, value] of Object.entries(form)) {
       if (!validateField(key, value)) {
         setShakeField(key);
+        if (key === "phone_number") {
+          setPhoneError(getPhoneValidationError(value));
+        }
         setTimeout(() => setShakeField(null), 500);
         return;
       }
+    }
+
+    const phoneE164 = toE164(form.phone_number);
+    if (!phoneE164) {
+      setShakeField("phone_number");
+      setPhoneError(getPhoneValidationError(form.phone_number));
+      setTimeout(() => setShakeField(null), 500);
+      return;
     }
 
     setLoading(true);
@@ -58,7 +75,7 @@ export function AuditFormSection() {
     const { error } = await supabase.from("contact_submissions").insert({
       full_name: form.full_name,
       business_name: form.business_name,
-      phone_number: form.phone_number,
+      phone_number: phoneE164,
       trade: form.trade,
       target_city: form.target_city,
     });
@@ -175,23 +192,25 @@ export function AuditFormSection() {
               </div>
 
               <div className="relative">
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">
+                <label
+                  htmlFor="audit-phone"
+                  className="block text-sm font-semibold text-slate-700 mb-1.5"
+                >
                   Phone Number
                 </label>
-                <div className="relative">
-                  <input
-                    type="tel"
-                    name="phone_number"
-                    required
-                    value={form.phone_number}
-                    onChange={handleChange}
-                    placeholder="07365519615"
-                    className={inputClasses("phone_number")}
-                  />
-                  {validateField("phone_number", form.phone_number) && (
-                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
-                  )}
-                </div>
+                <PhoneInputField
+                  id="audit-phone"
+                  value={form.phone_number}
+                  onChange={(next) => {
+                    setForm({ ...form, phone_number: next });
+                    setShakeField(null);
+                    setPhoneError(null);
+                  }}
+                  error={shakeField === "phone_number" || !!phoneError}
+                  shake={shakeField === "phone_number"}
+                  errorMessage={phoneError}
+                  showValidCheck
+                />
               </div>
 
               <div className="relative">

@@ -1,6 +1,6 @@
 # Implementation plan: international phone input (forms)
 
-**Status:** Planning only — no code until approved.  
+**Status:** Implemented (2026-06-03).  
 **Last updated:** 2026-06-03
 
 ---
@@ -293,12 +293,12 @@ Full number stored always includes country code: e.g. `+447365519615`, not `0736
 
 ## 12. Definition of done
 
-- [ ] Both forms use shared international phone input with searchable country + flags.
-- [ ] National input is digits-only with per-country validation.
-- [ ] Supabase receives E.164 in `phone_number`.
-- [ ] Business contact `07365519615` everywhere public; `07442 116785` only as visitor placeholder example.
+- [x] Both forms use shared international phone input with searchable country + flags.
+- [x] National input is digits-only with per-country validation.
+- [x] Supabase receives E.164 in `phone_number`.
+- [x] Business contact `07365519615` everywhere public; `7442 116785` only as visitor placeholder example.
 - [ ] Manual QA passed for GB and at least one other country (e.g. FR).
-- [ ] No new linter/type errors; `npm run build` succeeds.
+- [x] No new linter/type errors; `npm run build` succeeds.
 
 ---
 

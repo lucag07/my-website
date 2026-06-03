@@ -1,11 +1,18 @@
 import { Phone, Mail } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import {
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_TEL,
+  BUSINESS_EMAIL,
+} from "../content/contact";
 
 interface FinalCTAStripProps {
   phoneNumber?: string;
 }
 
-export function FinalCTAStrip({ phoneNumber = "07365519615" }: FinalCTAStripProps) {
+export function FinalCTAStrip({
+  phoneNumber = BUSINESS_PHONE_DISPLAY,
+}: FinalCTAStripProps) {
   const { ref, isVisible } = useScrollReveal();
 
   return (
@@ -26,18 +33,18 @@ export function FinalCTAStrip({ phoneNumber = "07365519615" }: FinalCTAStripProp
             Get Your Free Local Ranking Audit
           </a>
           <a
-            href={`tel:${phoneNumber.replace(/[^0-9+]/g, "")}`}
+            href={`tel:${BUSINESS_PHONE_TEL.replace(/[^0-9+]/g, "")}`}
             className="flex items-center justify-center text-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-base md:text-lg px-4 py-4 rounded-lg border border-slate-700 transition-all duration-200 min-h-[4.5rem] w-full"
           >
             <Phone className="w-5 h-5 shrink-0" />
             {phoneNumber}
           </a>
           <a
-            href="mailto:luca@tasklumas.com"
+            href={`mailto:${BUSINESS_EMAIL}`}
             className="flex items-center justify-center text-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-base md:text-lg px-4 py-4 rounded-lg border border-slate-700 transition-all duration-200 min-h-[4.5rem] w-full"
           >
             <Mail className="w-5 h-5 shrink-0" />
-            <span className="break-all sm:break-normal">luca@tasklumas.com</span>
+            <span className="break-all sm:break-normal">{BUSINESS_EMAIL}</span>
           </a>
         </div>
       </div>
