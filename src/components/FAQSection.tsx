@@ -6,22 +6,22 @@ const faqs = [
   {
     question: "How long until I see results?",
     answer:
-      "Most plumbing businesses start seeing movement within 30–45 days. Top 3 Map Pack positions typically land between days 60–90. We don't promise overnight wins because that's not how Google's local algorithm works. If you're not in the Top 3 within 90 days, we keep working for free until you are.",
+      "Google Maps rankings typically start moving within 30–45 days. Businesses following our process typically hit the Top 3 between day 60 and day 90. We don't promise overnight wins because that's not how Google's local algorithm works. If you're not in the Top 3 within 90 days, we keep working for free until you are.",
   },
   {
     question: "How much does this cost—and is it worth it vs Google Ads?",
     answer:
-      "Pricing depends on your local competition, how many postcodes you want to dominate, and whether you're emergency, residential, or commercial. After you watch your free video, if you want to move forward we'll give you a straight number — no vague 'packages.' Most plumbers find that one extra booked job per month pays for the service; unlike PPC, you're not paying every time someone clicks. Map Pack visibility compounds: once you're in the Top 3, you keep earning calls without burning budget on ads.",
+      "Pricing depends on your local competition and how many areas you want to rank in. After you watch your free video, if you want to move forward we'll give you a straight number — no vague 'packages.' One extra booked job a month pays for this service; unlike Google Ads, you're not paying for every visitor who lands on your profile. Once you're in the Top 3 on Google Maps, the calls keep coming — no ad budget needed.",
   },
   {
     question: "Am I locked into a long contract?",
     answer:
-      "No. We work month-to-month after an initial onboarding period because we're judged on rankings, not paperwork. If we're not delivering movement in the first 30–45 days, we'll tell you honestly on your review call—not hide behind a 12-month tie-in.",
+      "We start with a 3-month contract — that's the time needed to get you into the Top 3. After that it's month-to-month and you can leave anytime. If by days 30–45 we can see it's not working or won't work in your area, we'll tell you straight — we'd rather say that early than drag it out.",
   },
   {
     question: 'What exactly does "Top 3" mean for my area?',
     answer:
-      "It means your Google Business Profile appears in the Map Pack—the three listings with the map—when a real customer in your target area searches for a plumber (e.g. 'emergency plumber near me' or 'boiler repair [your town]'). We define the exact keywords and postcodes on the audit so there's no ambiguity: you'll know what we're aiming for before you commit.",
+      "When someone searches 'plumber near me' or 'emergency plumber [town]' on Google, they see a map with three businesses listed underneath it. Those are the Top 3 — and they get almost all the calls. We get your business into those three spots for the searches that matter in your area. Before you commit, we'll tell you exactly which searches we're targeting so you know precisely what you're paying for.",
   },
   {
     question: "Do you work with trades other than plumbing?",
@@ -31,7 +31,7 @@ const faqs = [
   {
     question: "I've been burned by SEO agencies before—why should I trust you?",
     answer:
-      "Fair question. Most agencies sell reports and backlinks; we focus only on local Map Pack rankings you can verify yourself — search 'plumber near me' on your phone in your town and see where you sit. No vanity metrics. You get a named point of contact and clear targets tied to Top 3 placement, not 'increased traffic.' If we don't think we can win in your market, we'll say so in your video.",
+      "Fair question. Most agencies send you monthly reports full of numbers that don't mean anything — impressions, clicks, traffic. We only care about one thing: are you in the Top 3 on Google Maps? You can check that yourself right now by searching 'plumber near me' on your phone. You either are or you aren't. You'll have one person to contact, clear targets, and if we don't think we can win in your area, we'll say so in your free video before you spend a penny.",
   },
   {
     question: "Is this black hat? Will Google suspend my profile?",
@@ -61,17 +61,22 @@ const faqs = [
   {
     question: "Do I need hundreds of 5-star reviews first?",
     answer:
-      "No. Reviews matter, but we've ranked plumbing businesses with fewer reviews than the market leader by fixing profile relevance, service-area setup, and category precision. We'll tell you if review velocity is your bottleneck and give you a simple system to earn reviews ethically—never fake or incentivised against Google's rules.",
+      "No. Reviews help, but Google ranks profiles based on a lot more than just review count — how complete your profile is, how relevant your categories are, and how well your service areas are set up all play a big part. A well-optimised profile can outrank a competitor with more reviews. If getting more reviews is what's holding you back, we'll tell you and give you a straightforward way to get them from real customers.",
   },
   {
     question: "Can you target multiple towns, or just one postcode?",
     answer:
-      "Multiple towns are possible when competition and your operational radius support it. Each extra area adds work and may affect pricing—we scope that on the audit so you're not paying for postcodes you can't actually serve. Quality beats spraying everywhere Google won't trust.",
+      "Yes. Most plumbers want to rank in more than one town and that's completely doable. The more areas you want to rank in, the more work involved, which may affect pricing — we'll go through that with you after your free video. One thing we won't do is target areas you don't actually cover. Google can tell, and it works against you.",
   },
   {
     question: "What's the deal if I don't rank in 90 days?",
     answer:
-      "We keep working for free until you're in the Top 3. Simple as that. We only take clients we're confident we can rank—that's why we audit first.",
+      "We keep working for free until you're in the Top 3. Simple as that. We only take clients we're confident we can rank — that's why we do a free video check first.",
+  },
+  {
+    question: "Will you work with other plumbers in my area?",
+    answer:
+      "No. Once we take you on, we won't work with any competing plumber in your area. That would be pointless — we'd just be fighting against ourselves. You get exclusivity for your area for as long as we're working together.",
   },
   {
     question: "Do I need to do anything on my end?",

@@ -8,7 +8,7 @@ export const SITE_SERVICE_LINE =
 export const META_TITLE =
   "Tasklumas - Top 3 Google Maps Ranking for Plumbers";
 export const META_DESCRIPTION =
-  "Get your plumbing business in the Top 3 on Google Maps within 90 days. If you're not ranked, we keep working for free until you are. Free audit for plumbers.";
+  "Get your plumbing business in the Top 3 on Google Maps within 90 days. If you're not ranked, we keep working for free until you are. Free ranking video for plumbers.";
 
 export const CTA_FREE_AUDIT = "See Who's Beating You and Why — Free";
 export const CTA_FREE_AUDIT_SHORT = "Free Ranking Video";
