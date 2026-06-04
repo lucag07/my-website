@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { X, Phone } from "lucide-react";
+import { X, Phone, Mail } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import {
   BUSINESS_PHONE_DISPLAY,
+  BUSINESS_EMAIL,
   EXIT_INTENT_EMAIL_PLACEHOLDER,
 } from "../content/contact";
 import { PhoneInputField } from "./phone/PhoneInput";
@@ -110,7 +111,7 @@ export function ExitIntentModal() {
               <Phone className="w-6 h-6 text-emerald-600" />
             </div>
             <p className="text-slate-900 font-semibold text-lg">
-              Got it! We'll call you soon.
+              Got it! We'll be in touch soon.
             </p>
           </div>
         ) : (
@@ -126,8 +127,7 @@ export function ExitIntentModal() {
                 Don't Miss Out
               </h3>
               <p className="text-slate-600 text-sm">
-                Leave your phone number and we'll reach out with your free
-                plumbing ranking analysis.
+                Leave your number and we'll send you a free personal video showing exactly where you rank and why.
               </p>
             </div>
 
@@ -151,20 +151,34 @@ export function ExitIntentModal() {
                 disabled={loading}
                 className="w-full bg-amber-400 hover:bg-amber-300 disabled:bg-amber-300 text-slate-900 font-bold py-3 rounded-lg transition-all duration-200"
               >
-                {loading ? "Sending..." : "Call Me"}
+                {loading ? "Sending..." : "Send Me the Free Video"}
               </button>
             </form>
 
-            <p className="mt-4 text-center text-xs text-stone-400">
-              Or call us directly:{" "}
+            <div className="mt-4 flex items-center gap-3">
+              <div className="flex-1 h-px bg-stone-200" />
+              <span className="text-xs text-stone-400">or reach out directly</span>
+              <div className="flex-1 h-px bg-stone-200" />
+            </div>
+
+            <div className="mt-3 flex flex-col sm:flex-row gap-2">
               <a
                 href={`tel:${BUSINESS_PHONE_DISPLAY.replace(/[^0-9+]/g, "")}`}
-                className="font-semibold text-slate-600 hover:text-slate-900"
+                className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-stone-200 text-slate-600 hover:text-slate-900 hover:border-stone-300 transition-colors text-sm font-medium"
               >
+                <Phone className="w-4 h-4" />
                 {BUSINESS_PHONE_DISPLAY}
               </a>
-            </p>
-            <p className="mt-1 text-center text-xs text-stone-400">
+              <a
+                href={`mailto:${BUSINESS_EMAIL}`}
+                className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-stone-200 text-slate-600 hover:text-slate-900 hover:border-stone-300 transition-colors text-sm font-medium"
+              >
+                <Mail className="w-4 h-4" />
+                Email us
+              </a>
+            </div>
+
+            <p className="mt-3 text-center text-xs text-stone-400">
               No spam. No pressure. Just results.
             </p>
           </>
