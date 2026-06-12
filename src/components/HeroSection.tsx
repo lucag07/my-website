@@ -18,8 +18,13 @@ export function HeroSection() {
         </h1>
 
         <p className="mt-6 text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-          We get your plumbing business ringing with exclusive jobs in 90 days.
-          If you're not in the Top 3 by then, we keep working for free until you are.
+          Right now a homeowner near you is searching for a plumber on Google.
+          They're calling whoever shows up first. That could be you.
+        </p>
+
+        <p className="mt-3 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          We get your plumbing business into the Top 3 in 90 days.
+          If you're not there by then, we keep working for free until you are.
         </p>
 
         <div className="mt-12 flex justify-center">

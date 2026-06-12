@@ -1,6 +1,7 @@
 import { HeroSection } from "./components/HeroSection";
 import { RealityCheckSection } from "./components/RealityCheckSection";
 import { HowItWorksSection } from "./components/HowItWorksSection";
+import { WhyNotOthersSection } from "./components/WhyNotOthersSection";
 import { FinancialMathSection } from "./components/FinancialMathSection";
 import { TrustSignalsStrip } from "./components/TrustSignalsStrip";
 import { MetricsSection } from "./components/MetricsSection";
@@ -20,6 +21,7 @@ function App() {
       <HeroSection />
       <RealityCheckSection />
       <HowItWorksSection />
+      <WhyNotOthersSection />
       <FinancialMathSection />
       <TrustSignalsStrip />
       <MetricsSection />
