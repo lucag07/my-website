@@ -222,7 +222,8 @@ export function ExitIntentModal() {
                 </div>
               )}
 
-              <div>
+              <div className="text-left">
+                <label className="block text-sm font-semibold text-slate-700 mb-1.5">Email Address</label>
                 <input
                   type="email"
                   value={email}
@@ -239,7 +240,8 @@ export function ExitIntentModal() {
                 {emailError && <p className="mt-1 text-xs text-red-500">{emailError}</p>}
               </div>
 
-              <div>
+              <div className="text-left">
+                <label className="block text-sm font-semibold text-slate-700 mb-1.5">What's your main goal?</label>
                 <textarea
                   value={goal}
                   onChange={(e) => setGoal(e.target.value)}
