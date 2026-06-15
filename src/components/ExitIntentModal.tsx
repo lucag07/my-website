@@ -1,35 +1,28 @@
 import { useState, useEffect, useRef } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { X, Phone } from "lucide-react";
+import { X, Phone, Mail } from "lucide-react";
 import { supabase } from "../lib/supabase";
-import { InputField } from "./ui/InputField";
-
-const modalSchema = z.object({
-  phone_number: z.string().min(10, "Please enter a valid phone number"),
-});
-
-type ModalFormData = z.infer<typeof modalSchema>;
+import {
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_EMAIL,
+  EXIT_INTENT_EMAIL_PLACEHOLDER,
+} from "../content/contact";
+import { PhoneInputField } from "./phone/PhoneInput";
+import {
+  toE164,
+  getPhoneValidationError,
+  isPhonePossible,
+} from "../lib/phone/validate";
 
 export function ExitIntentModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [shake, setShake] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [hasShown, setHasShown] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm<ModalFormData>({
-    resolver: zodResolver(modalSchema),
-    defaultValues: {
-      phone_number: "",
-    },
-  });
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -68,6 +61,51 @@ export function ExitIntentModal() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitError(null);
+
+    if (!isPhonePossible(phone)) {
+      setPhoneError(getPhoneValidationError(phone));
+      setShake(true);
+      setTimeout(() => setShake(false), 500);
+      return;
+    }
+
+    const phoneE164 = toE164(phone);
+    if (!phoneE164) {
+      setPhoneError(getPhoneValidationError(phone));
+      setShake(true);
+      setTimeout(() => setShake(false), 500);
+      return;
+    }
+
+    setLoading(true);
+
+    const { error } = await supabase.from("contact_submissions").insert({
+      full_name: "Exit Intent Lead",
+      business_name: "Pending",
+      phone_number: phoneE164,
+      trade: "Unknown",
+      email: EXIT_INTENT_EMAIL_PLACEHOLDER,
+      target_city: "Unknown",
+    });
+
+    setLoading(false);
+
+    if (error) {
+      console.error("Supabase insert error:", error);
+      setSubmitError("Something went wrong. Please try again.");
+    } else {
+      setSubmitted(true);
+      setTimeout(() => {
+        setIsOpen(false);
+        setPhone("");
+        setSubmitted(false);
+      }, 2500);
+    }
+  };
 
   // Focus trapping and returning focus
   useEffect(() => {
@@ -123,37 +161,15 @@ export function ExitIntentModal() {
     }
   }, [isOpen]);
 
-  const onSubmit = async (data: ModalFormData) => {
-    setSubmitError(null);
-    const { error } = await supabase.from("contact_submissions").insert({
-      full_name: "Exit Intent Lead",
-      business_name: "Pending",
-      phone_number: data.phone_number,
-      trade: "Unknown",
-      target_city: "Unknown",
-    });
-
-    if (error) {
-      console.error("Supabase insert error:", error);
-      setSubmitError("Something went wrong. Please try again.");
-    } else {
-      setSubmitted(true);
-      setTimeout(() => {
-        setIsOpen(false);
-        reset();
-      }, 2500);
-    }
-  };
-
   if (!isOpen) return null;
 
   return (
-    <div 
+    <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="modal-title"
-      aria-describedby="modal-desc"
+      aria-labelledby="exit-intent-title"
+      aria-describedby="exit-intent-desc"
     >
       <div
         className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"
@@ -164,9 +180,10 @@ export function ExitIntentModal() {
         className="relative bg-white rounded-2xl max-w-md w-full p-6 md:p-8 shadow-2xl transform transition-all"
       >
         <button
+          type="button"
           onClick={() => setIsOpen(false)}
           className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
-          aria-label="Close modal"
+          aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
         </button>
@@ -177,7 +194,7 @@ export function ExitIntentModal() {
               <Phone className="w-6 h-6 text-emerald-600" />
             </div>
             <p className="text-slate-900 font-semibold text-lg">
-              Got it! We'll call you soon.
+              Got it! We'll be in touch soon.
             </p>
           </div>
         ) : (
@@ -186,38 +203,69 @@ export function ExitIntentModal() {
               <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-3">
                 <Phone className="w-6 h-6 text-amber-600" />
               </div>
-              <h3 id="modal-title" className="text-xl font-bold text-slate-900 mb-2">
+              <h3
+                id="exit-intent-title"
+                className="text-xl font-bold text-slate-900 mb-2"
+              >
                 Don't Miss Out
               </h3>
-              <p id="modal-desc" className="text-slate-600 text-sm">
-                Leave your phone number and we'll reach out with your free local
-                ranking analysis.
+              <p id="exit-intent-desc" className="text-slate-600 text-sm">
+                Leave your number and we'll send you a free personal video showing exactly where you rank and why.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               {submitError && (
                 <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm font-medium" role="alert">
                   {submitError}
                 </div>
               )}
 
-              <InputField
-                label="Phone Number"
-                type="tel"
-                placeholder="07365519615"
-                error={errors.phone_number?.message}
-                {...register("phone_number")}
+              <PhoneInputField
+                id="exit-intent-phone"
+                value={phone}
+                onChange={(next) => {
+                  setPhone(next);
+                  setPhoneError(null);
+                }}
+                compact
+                error={!!phoneError}
+                shake={shake}
+                errorMessage={phoneError}
+                showValidCheck={false}
+                helperText="Include your mobile — country code is selected on the left."
               />
-
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={loading}
                 className="w-full bg-amber-400 hover:bg-amber-300 disabled:bg-amber-300 text-slate-900 font-bold py-3 rounded-lg transition-all duration-200 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Sending..." : "Call Me"}
+                {loading ? "Sending..." : "Send Me the Free Video"}
               </button>
             </form>
+
+            <div className="mt-4 flex items-center gap-3">
+              <div className="flex-1 h-px bg-stone-200" />
+              <span className="text-xs text-stone-400">or reach out directly</span>
+              <div className="flex-1 h-px bg-stone-200" />
+            </div>
+
+            <div className="mt-3 flex flex-col sm:flex-row gap-2">
+              <a
+                href={`tel:${BUSINESS_PHONE_DISPLAY.replace(/[^0-9+]/g, "")}`}
+                className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-stone-200 text-slate-600 hover:text-slate-900 hover:border-stone-300 transition-colors text-sm font-medium"
+              >
+                <Phone className="w-4 h-4" />
+                {BUSINESS_PHONE_DISPLAY}
+              </a>
+              <a
+                href={`mailto:${BUSINESS_EMAIL}`}
+                className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg border border-stone-200 text-slate-600 hover:text-slate-900 hover:border-stone-300 transition-colors text-sm font-medium"
+              >
+                <Mail className="w-4 h-4" />
+                Email us
+              </a>
+            </div>
 
             <p className="mt-3 text-center text-xs text-stone-400">
               No spam. No pressure. Just results.

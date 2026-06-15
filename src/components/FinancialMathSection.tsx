@@ -34,17 +34,15 @@ export function FinancialMathSection() {
               The Maths Is Simple
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
-              One single job pays for this service for months. The rest is pure
-              profit for your pocket.{" "}
+              One emergency call-out or boiler install pays for this service for months.{" "}
               <span className="font-semibold text-slate-900">
-                If we don't deliver the rankings, you get a 100% refund. The
-                risk is entirely on us.
+                Every job after that is pure profit. That's the deal.
               </span>
             </p>
             <div className="mt-8 flex items-center gap-3 bg-emerald-50 border border-emerald-200 rounded-lg px-5 py-4">
               <div className="w-2 h-2 rounded-full bg-emerald-500" />
               <p className="text-sm text-emerald-800 font-medium">
-                Zero risk. All upside. That's the deal.
+                We don't stop until you're ranked.
               </p>
             </div>
           </div>

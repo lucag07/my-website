@@ -1,68 +1,105 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { CheckCircle } from "lucide-react";
+import { useState, FormEvent } from "react";
+import { CheckCircle, Check } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import { useScrollReveal } from "../hooks/useScrollReveal";
-import { InputField } from "./ui/InputField";
-import { SelectField } from "./ui/SelectField";
-
-const trades = [
-  { value: "Roofer", label: "Roofer" },
-  { value: "Plumber", label: "Plumber" },
-  { value: "Landscaper", label: "Landscaper" },
-  { value: "HVAC", label: "HVAC" },
-  { value: "Other", label: "Other" },
-];
-
-const formSchema = z.object({
-  full_name: z.string().min(2, "Name must be at least 2 characters"),
-  business_name: z.string().min(2, "Business name must be at least 2 characters"),
-  phone_number: z.string().min(10, "Please enter a valid phone number"),
-  trade: z.string().min(1, "Please select a trade"),
-  target_city: z.string().min(2, "City must be at least 2 characters"),
-});
-
-type FormData = z.infer<typeof formSchema>;
+import {
+  isValidEmail,
+  normalizeEmail,
+  getEmailValidationError,
+} from "../lib/email/validate";
+import { FORM_EMAIL_PLACEHOLDER } from "../content/contact";
 
 export function AuditFormSection() {
   const { ref, isVisible } = useScrollReveal();
   const [submitted, setSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      full_name: "",
-      business_name: "",
-      phone_number: "",
-      trade: "",
-      target_city: "",
-    },
+  const [loading, setLoading] = useState(false);
+  const [shakeField, setShakeField] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const [form, setForm] = useState({
+    full_name: "",
+    email: "",
+    target_city: "",
   });
 
-  const onSubmit = async (data: FormData) => {
-    setSubmitError(null);
-    
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setShakeField(null);
+    if (e.target.name === "email") {
+      setEmailError(null);
+    }
+  };
+
+  const validateField = (name: string, value: string): boolean => {
+    if (!value.trim()) return false;
+    if (name === "email") {
+      return isValidEmail(value);
+    }
+    return true;
+  };
+
+  const getProgress = (): number => {
+    const fields = Object.keys(form);
+    const filled = fields.filter((field) =>
+      validateField(field, form[field as keyof typeof form])
+    );
+    return Math.round((filled.length / fields.length) * 100);
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    for (const [key, value] of Object.entries(form)) {
+      if (!validateField(key, value)) {
+        setShakeField(key);
+        if (key === "email") {
+          setEmailError(getEmailValidationError(value));
+        }
+        setTimeout(() => setShakeField(null), 500);
+        return;
+      }
+    }
+
+    const email = normalizeEmail(form.email);
+    if (!isValidEmail(email)) {
+      setShakeField("email");
+      setEmailError(getEmailValidationError(form.email));
+      setTimeout(() => setShakeField(null), 500);
+      return;
+    }
+
+    setLoading(true);
+
     const { error } = await supabase.from("contact_submissions").insert({
-      full_name: data.full_name,
-      business_name: data.business_name,
-      phone_number: data.phone_number,
-      trade: data.trade,
-      target_city: data.target_city,
+      full_name: form.full_name,
+      business_name: "Pending",
+      phone_number: null,
+      email,
+      target_city: form.target_city,
     });
 
-    if (error) {
-      console.error("Supabase insert error:", error);
-      setSubmitError("Something went wrong. Please try again or contact us directly.");
-    } else {
+    setLoading(false);
+
+    if (!error) {
       setSubmitted(true);
     }
+  };
+
+  const inputClasses = (fieldName: string): string => {
+    const base =
+      "w-full px-4 py-3 rounded-lg border bg-white text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200";
+    const isValid = validateField(
+      fieldName,
+      form[fieldName as keyof typeof form]
+    );
+    const shake = shakeField === fieldName ? "animate-shake" : "";
+
+    if (shakeField === fieldName) {
+      return `${base} border-red-400 ${shake}`;
+    }
+    if (isValid) {
+      return `${base} border-emerald-400 focus:ring-emerald-400`;
+    }
+    return `${base} border-stone-300 focus:ring-amber-400`;
   };
 
   return (
@@ -73,12 +110,10 @@ export function AuditFormSection() {
       >
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Get Your Free Local Ranking Audit
+            See Who's Beating You on Google Maps
           </h2>
           <p className="text-slate-600 leading-relaxed">
-            We'll manually check where your business stands right now and show
-            you the exact visibility gaps. Walk away with clear answers even if
-            you never work with us.
+            Fill in three fields and we'll send you a free personal video showing exactly where you rank, who's above you, and what's costing you calls.
           </p>
         </div>
 
@@ -86,74 +121,130 @@ export function AuditFormSection() {
           <div className="text-center py-12 bg-white rounded-2xl border border-stone-200 shadow-sm">
             <CheckCircle className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-slate-900 mb-2">
-              We've Got It
+              You're on the list
             </h3>
             <p className="text-slate-600 max-w-sm mx-auto">
-              We'll review your local maps layout and call you within 4 hours.
+              We'll record your personal ranking video and send it to you within 24 hours.
             </p>
           </div>
         ) : (
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="bg-white rounded-2xl p-6 md:p-8 border border-stone-200 shadow-sm space-y-5"
-          >
-            {submitError && (
-              <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm font-medium" role="alert">
-                {submitError}
+          <>
+            <div className="mb-4">
+              <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
+                <span>Form Progress</span>
+                <span>{getProgress()}%</span>
               </div>
-            )}
-            
-            <InputField
-              label="Full Name"
-              type="text"
-              placeholder="John Smith"
-              error={errors.full_name?.message}
-              {...register("full_name")}
-            />
+              <div className="h-1.5 bg-stone-200 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-amber-400 transition-all duration-300 ease-out"
+                  style={{ width: `${getProgress()}%` }}
+                />
+              </div>
+            </div>
 
-            <InputField
-              label="Business Name"
-              type="text"
-              placeholder="Smith Roofing LLC"
-              error={errors.business_name?.message}
-              {...register("business_name")}
-            />
-
-            <InputField
-              label="Phone Number"
-              type="tel"
-              placeholder="07365519615"
-              error={errors.phone_number?.message}
-              {...register("phone_number")}
-            />
-
-            <SelectField
-              label="Trade"
-              options={trades}
-              error={errors.trade?.message}
-              {...register("trade")}
-            />
-
-            <InputField
-              label="Target City / Area"
-              type="text"
-              placeholder="Dallas, TX"
-              error={errors.target_city?.message}
-              {...register("target_city")}
-            />
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-amber-400 hover:bg-amber-300 disabled:bg-amber-300 disabled:cursor-not-allowed text-slate-900 font-bold text-lg py-4 rounded-lg shadow-lg shadow-amber-400/25 transition-all duration-200 hover:shadow-amber-400/40"
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white rounded-2xl p-6 md:p-8 border border-stone-200 shadow-sm space-y-5"
             >
-              {isSubmitting ? "Sending..." : "Get My Free Audit"}
-            </button>
+              <div className="relative">
+                <label
+                  htmlFor="audit-full-name"
+                  className="block text-sm font-semibold text-slate-700 mb-1.5"
+                >
+                  Your Name
+                </label>
+                <div className="relative">
+                  <input
+                    id="audit-full-name"
+                    type="text"
+                    name="full_name"
+                    required
+                    value={form.full_name}
+                    onChange={handleChange}
+                    placeholder="John Smith"
+                    className={inputClasses("full_name")}
+                  />
+                  {validateField("full_name", form.full_name) && (
+                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                  )}
+                </div>
+              </div>
 
-            <p className="text-center text-xs text-stone-400">
-              No spam. No sales pitch. Just direct answers.
-            </p>
-          </form>
+              <div className="relative">
+                <label
+                  htmlFor="audit-email"
+                  className="block text-sm font-semibold text-slate-700 mb-1.5"
+                >
+                  Email Address
+                </label>
+                <div className="relative">
+                  <input
+                    id="audit-email"
+                    type="email"
+                    name="email"
+                    required
+                    autoComplete="email"
+                    inputMode="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder={FORM_EMAIL_PLACEHOLDER}
+                    aria-invalid={!!emailError}
+                    aria-describedby={emailError ? "audit-email-error" : undefined}
+                    className={inputClasses("email")}
+                  />
+                  {validateField("email", form.email) && (
+                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                  )}
+                </div>
+                {emailError && (
+                  <p
+                    id="audit-email-error"
+                    className="mt-1.5 text-xs text-red-600"
+                    role="alert"
+                  >
+                    {emailError}
+                  </p>
+                )}
+              </div>
+
+              <div className="relative">
+                <label
+                  htmlFor="audit-target-city"
+                  className="block text-sm font-semibold text-slate-700 mb-1.5"
+                >
+                  Where do you want to rank?
+                </label>
+                <div className="relative">
+                  <input
+                    id="audit-target-city"
+                    type="text"
+                    name="target_city"
+                    required
+                    value={form.target_city}
+                    onChange={handleChange}
+                    placeholder="Edinburgh"
+                    className={inputClasses("target_city")}
+                  />
+                  {validateField("target_city", form.target_city) && (
+                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                  )}
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-amber-400 hover:bg-amber-300 disabled:bg-amber-300 disabled:cursor-not-allowed text-slate-900 font-bold text-lg py-4 rounded-lg shadow-lg shadow-amber-400/25 transition-all duration-200 hover:shadow-amber-400/40"
+              >
+                {loading ? "Sending..." : "Send Me the Free Video"}
+              </button>
+
+              <div className="flex items-center justify-center gap-2 text-xs text-stone-400">
+                <CheckCircle className="w-3.5 h-3.5" />
+                <span>We typically respond within 4 hours</span>
+              </div>
+            </form>
+          </>
         )}
       </div>
     </section>

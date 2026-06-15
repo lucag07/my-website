@@ -1,5 +1,6 @@
 import { Clock, Award, Shield } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { Section } from "./Section";
 
 const pillars = [
   {
@@ -9,14 +10,14 @@ const pillars = [
   },
   {
     icon: Award,
-    title: "Proven Across Multiple Trades",
+    title: "Built for Plumbers Only",
     description:
-      "Successfully ranking roofers, plumbers, landscapers, and HVAC pros.",
+      "We rank plumbing businesses exclusively—emergency, residential, and commercial.",
   },
   {
     icon: Shield,
-    title: "Our Money-Where-Our-Mouth-Is Guarantee",
-    description: "90-day absolute performance shield.",
+    title: "We Work Until You're in the Top 3",
+    description: "If you're not ranked in 90 days, we keep working for free until you are.",
   },
 ];
 
@@ -24,16 +25,16 @@ export function TrustSignalsStrip() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section className="bg-slate-900 py-16 md:py-20 border-t border-b border-slate-800">
+    <Section variant="dark" size="compact" bordered>
       <div
         ref={ref}
-        className={`${isVisible ? "reveal-visible" : "reveal-base"} max-w-6xl mx-auto px-6`}
+        className={isVisible ? "reveal-visible" : "reveal-base"}
       >
         <div className="grid md:grid-cols-3 gap-10 md:gap-12">
           {pillars.map((pillar) => (
             <div key={pillar.title} className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-slate-800 mb-4">
-                <pillar.icon className="w-6 h-6 text-amber-400" />
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-surface-dark-muted mb-4">
+                <pillar.icon className="w-6 h-6 text-brand" />
               </div>
               <h3 className="text-white font-bold mb-2">{pillar.title}</h3>
               <p className="text-slate-400 text-sm leading-relaxed">
@@ -43,6 +44,6 @@ export function TrustSignalsStrip() {
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

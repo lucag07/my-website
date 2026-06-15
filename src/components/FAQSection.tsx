@@ -1,42 +1,87 @@
 import { useState } from "react";
-import { ChevronDown, Phone, Mail } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const faqs = [
   {
-    question: "I've been burned by SEO agencies before. How is Tasklumas different?",
-    answer:
-      "Most agencies focus on vanity metrics like 'traffic' or 'impressions' while locking you into 12-month contracts. We don't care about traffic; we care about the phone ringing. We focus exclusively on the Google Maps 3-Pack because it drives the highest intent leads. And unlike them, we put our money where our mouth is: if you don't hit the Top 3 in 90 days, you get a full refund. No long-term contracts, no excuses.",
-  },
-  {
-    question: "Are these leads shared with my competitors? (Like HomeAdvisor or Angi)",
-    answer:
-      "Absolutely not. When someone searches for your service in your area and calls the number on your Google Maps listing, that lead goes directly to you and ONLY you. You own the profile, you own the leads. We don't sell leads to the highest bidder.",
-  },
-  {
-    question: "Are we just paying for Google Ads (PPC)?",
-    answer:
-      "No. While Google Ads can be effective, they disappear the second you stop paying. We focus on organic Google Maps (Local SEO) ranking. Once you secure a spot in the Top 3, you get consistent, high-quality calls without having to pay Google for every single click.",
-  },
-  {
-    question: "What happens after the 90 days? Do I still need you?",
-    answer:
-      "Once you hit the Top 3, competitors will naturally try to outrank you. Most of our clients choose to stay with us to defend their #1 spot, expand their ranking radius into neighboring towns, and continue growing their lead volume. However, you are never locked into a contract—you stay because it's profitable.",
-  },
-  {
     question: "How long until I see results?",
     answer:
-      "Most businesses start seeing movement within 30-45 days. Top 3 rankings typically hit between days 60-90. We don't promise overnight success because that's not how Google works, but we do promise results within 90 days or you get a full refund.",
+      "Google Maps rankings typically start moving within 30–45 days. Businesses following our process typically hit the Top 3 between day 60 and day 90. We don't promise overnight wins because that's not how Google's local algorithm works. If you're not in the Top 3 within 90 days, we keep working for free until you are.",
   },
   {
-    question: "What's the catch with the 100% money-back guarantee?",
+    question: "How much does this cost—and is it worth it vs Google Ads?",
     answer:
-      "There is no catch. If your business isn't in the Top 3 on Google Maps for your primary keywords in your target location within 90 days, you get 100% of your money back. We only take on clients we know we can win for. If we don't think we can rank you, we won't take your money in the first place.",
+      "Pricing depends on your local competition and how many areas you want to rank in. After you watch your free video, if you want to move forward we'll give you a straight number — no vague 'packages.' One extra booked job a month pays for this service; unlike Google Ads, you're not paying for every visitor who lands on your profile. Once you're in the Top 3 on Google Maps, the calls keep coming — no ad budget needed.",
   },
   {
-    question: "Do I need to write content, build links, or do anything technical?",
+    question: "Am I locked into a long contract?",
     answer:
-      "Zero technical work on your end. We handle the heavy lifting. We just need initial access to your Google Business Profile (or we'll help you set one up) and a quick onboarding chat to understand your best services. You focus on running your business; we focus on making the phone ring.",
+      "We start with a 3-month contract — that's the time needed to get you into the Top 3. After that it's month-to-month and you can leave anytime. If by days 30–45 we can see it's not working or won't work in your area, we'll tell you straight — we'd rather say that early than drag it out.",
+  },
+  {
+    question: 'What exactly does "Top 3" mean for my area?',
+    answer:
+      "When someone searches 'plumber near me' or 'emergency plumber [town]' on Google, they see a map with three businesses listed underneath it. Those are the Top 3 — and they get almost all the calls. We get your business into those three spots for the searches that matter in your area. Before you commit, we'll tell you exactly which searches we're targeting so you know precisely what you're paying for.",
+  },
+  {
+    question: "Do you work with trades other than plumbing?",
+    answer:
+      "No. We only work with plumbing businesses—heating engineers, bathroom fitters, drainage specialists, and general plumbers who serve a defined local area. That focus is what lets us deliver strong Map Pack results for your niche. If you're not a plumber, we're not the right fit.",
+  },
+  {
+    question: "I've been burned by SEO agencies before—why should I trust you?",
+    answer:
+      "Fair question. Most agencies send you monthly reports full of numbers that don't mean anything — impressions, clicks, traffic. We only care about one thing: are you in the Top 3 on Google Maps? You can check that yourself right now by searching 'plumber near me' on your phone. You either are or you aren't. You'll have one person to contact, clear targets, and if we don't think we can win in your area, we'll say so in your free video before you spend a penny.",
+  },
+  {
+    question: "Is this black hat? Will Google suspend my profile?",
+    answer:
+      "Everything we do aligns with Google Business Profile guidelines: accurate categories, service areas, reviews earned properly, consistent NAP, and relevant content—not spam links or fake locations. Risky tactics get profiles suspended; we don't use them. Your reputation on Google is an asset—we treat it that way.",
+  },
+  {
+    question: "How is this different from Checkatrade, Bark, or shared lead sites?",
+    answer:
+      "Shared lead platforms sell the same enquiry to several plumbers—you're racing to quote and paying per lead whether you win the job or not. Map Pack rankings send exclusive calls to your business: the customer chose you from Google and dialled your number. You're building an asset you own, not renting access to someone else's marketplace.",
+  },
+  {
+    question: "What do I actually get when I sign up?",
+    answer:
+      "We record a personal video — usually 4–5 minutes — and send it straight to you. No call, no meeting. We walk through where you rank right now, show you exactly who's above you and why they're winning, and explain what's blocking your calls. You'll leave with a clear picture of what needs fixing, even if you never work with us.",
+  },
+  {
+    question: "What if a competitor is already #1 in my town?",
+    answer:
+      "Someone will hold those spots—that's exactly why inaction costs you. We analyse why they're winning (reviews, categories, proximity, content) and whether the gap is closable in 90 days. Sometimes the leader is beatable quickly; sometimes we recommend a neighbouring postcode first. You'll get a realistic plan, not a promise we can't keep.",
+  },
+  {
+    question: "What if I'm already ranking?",
+    answer:
+      "Good start—but most plumbers only rank in their immediate town while missing neighbouring areas where the same customers search. We expand coverage across multiple postcodes and tighten your profile so you hold Top 3 in more high-intent searches, not just one lucky keyword.",
+  },
+  {
+    question: "Do I need hundreds of 5-star reviews first?",
+    answer:
+      "No. Reviews help, but Google ranks profiles based on a lot more than just review count — how complete your profile is, how relevant your categories are, and how well your service areas are set up all play a big part. A well-optimised profile can outrank a competitor with more reviews. If getting more reviews is what's holding you back, we'll tell you and give you a straightforward way to get them from real customers.",
+  },
+  {
+    question: "Can you target multiple towns, or just one postcode?",
+    answer:
+      "Yes. Most plumbers want to rank in more than one town and that's completely doable. The more areas you want to rank in, the more work involved, which may affect pricing — we'll go through that with you after your free video. One thing we won't do is target areas you don't actually cover. Google can tell, and it works against you.",
+  },
+  {
+    question: "What's the deal if I don't rank in 90 days?",
+    answer:
+      "We keep working for free until you're in the Top 3. Simple as that. We only take clients we're confident we can rank — that's why we do a free video check first.",
+  },
+  {
+    question: "Will you work with other plumbers in my area?",
+    answer:
+      "No. Once we take you on, we won't work with any competing plumber in your area. That would be pointless — we'd just be fighting against ourselves. You get exclusivity for your area for as long as we're working together.",
+  },
+  {
+    question: "Do I need to do anything on my end?",
+    answer:
+      "Minimal. Grant access to your Google Business Profile (or we'll help you claim one), confirm your real service areas, and occasionally approve photos or answer a quick question about how you operate. No daily logins, no content calendars for you to manage—we handle the technical and optimisation work.",
   },
 ];
 
@@ -52,24 +97,24 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border border-stone-200 rounded-lg overflow-hidden bg-white">
+    <div className="border border-stone-200 rounded-lg overflow-hidden">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-stone-50 transition-colors"
       >
         <span className="font-semibold text-slate-900">{question}</span>
         <ChevronDown
-          className={`w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0 ml-4 ${
+          className={`w-5 h-5 text-slate-400 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
       </button>
       <div
         className={`overflow-hidden transition-all duration-200 ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[32rem]" : "max-h-0"
         }`}
       >
-        <p className="px-5 pb-4 text-slate-600 leading-relaxed border-t border-stone-100 mt-2 pt-4">{answer}</p>
+        <p className="px-5 pb-4 text-slate-600 leading-relaxed">{answer}</p>
       </div>
     </div>
   );
@@ -89,7 +134,7 @@ export function FAQSection() {
           Frequently Asked Questions
         </h2>
         <p className="text-slate-600 text-center mb-12">
-          Everything you need to know before getting started.
+          Straight answers for plumbing business owners before you apply.
         </p>
 
         <div className="space-y-4">
@@ -102,30 +147,6 @@ export function FAQSection() {
               onToggle={() => setOpenIndex(openIndex === index ? null : index)}
             />
           ))}
-        </div>
-
-        {/* Contact Block */}
-        <div className="mt-12 bg-white rounded-xl p-8 border border-stone-200 text-center shadow-sm">
-          <h3 className="text-xl font-bold text-slate-900 mb-2">Still have questions?</h3>
-          <p className="text-slate-600 mb-6 max-w-lg mx-auto">
-            Not sure if we're a fit for your specific trade? Give us a call or shoot us an email. No sales pressure, just honest answers.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href="tel:07365519615"
-              className="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-6 py-3 rounded-lg transition-colors w-full sm:w-auto justify-center"
-            >
-              <Phone className="w-4 h-4" />
-              07365519615
-            </a>
-            <a 
-              href="mailto:luca@tasklumas.com" 
-              className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold px-6 py-3 rounded-lg transition-colors w-full sm:w-auto justify-center"
-            >
-              <Mail className="w-4 h-4" />
-              luca@tasklumas.com
-            </a>
-          </div>
         </div>
       </div>
     </section>

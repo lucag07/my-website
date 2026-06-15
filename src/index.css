@@ -2,8 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-slate-800 antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .section-y {
+    @apply py-20 md:py-28;
+  }
+
+  .section-y-compact {
+    @apply py-16 md:py-20;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-wider;
+  }
+
+  .eyebrow-on-dark {
+    @apply eyebrow text-brand;
+  }
+
+  .eyebrow-on-light {
+    @apply eyebrow text-amber-600;
+  }
 }
 
 @keyframes pulse-ring {
