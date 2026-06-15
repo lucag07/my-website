@@ -1,12 +1,12 @@
-import { Clock, Award, Shield } from "lucide-react";
+import { MapPin, Award, Shield } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { Section } from "./Section";
 
 const pillars = [
   {
-    icon: Clock,
-    title: "Years Running Live Ranking Systems",
-    description: "Active local data running in production right now.",
+    icon: MapPin,
+    title: "Based in Dundee, Scotland",
+    description: "We're a local UK business, not a faceless overseas agency. We understand the market.",
   },
   {
     icon: Award,

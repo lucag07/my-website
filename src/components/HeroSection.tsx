@@ -15,7 +15,6 @@ export function HeroSection() {
   const [form, setForm] = useState({
     full_name: "",
     email: "",
-    phone_number: "",
     goal: "",
   });
 
@@ -62,7 +61,7 @@ export function HeroSection() {
     const { error } = await supabase.from("contact_submissions").insert({
       full_name: form.full_name,
       business_name: "Pending",
-      phone_number: form.phone_number,
+      phone_number: "Not provided",
       email,
       target_city: form.goal,
     });
@@ -151,19 +150,6 @@ export function HeroSection() {
                   className={inputClasses("email")}
                 />
                 {emailError && <p className="mt-1 text-xs text-red-400">{emailError}</p>}
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-1.5">Phone Number</label>
-                <input
-                  type="tel"
-                  name="phone_number"
-                  required
-                  value={form.phone_number}
-                  onChange={handleChange}
-                  placeholder="07365519615"
-                  className={inputClasses("phone_number")}
-                />
               </div>
 
               <div>

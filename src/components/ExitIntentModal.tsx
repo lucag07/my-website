@@ -4,19 +4,20 @@ import { supabase } from "../lib/supabase";
 import {
   BUSINESS_PHONE_DISPLAY,
   BUSINESS_EMAIL,
-  EXIT_INTENT_EMAIL_PLACEHOLDER,
+  FORM_EMAIL_PLACEHOLDER,
 } from "../content/contact";
-import { PhoneInputField } from "./phone/PhoneInput";
 import {
-  toE164,
-  getPhoneValidationError,
-  isPhonePossible,
-} from "../lib/phone/validate";
+  isValidEmail,
+  normalizeEmail,
+  getEmailValidationError,
+} from "../lib/email/validate";
+
 
 export function ExitIntentModal() {
   const [isOpen, setIsOpen] = useState(false);
-  const [phone, setPhone] = useState("");
-  const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [email, setEmail] = useState("");
+  const [goal, setGoal] = useState("");
+  const [emailError, setEmailError] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [shake, setShake] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -66,16 +67,15 @@ export function ExitIntentModal() {
     e.preventDefault();
     setSubmitError(null);
 
-    if (!isPhonePossible(phone)) {
-      setPhoneError(getPhoneValidationError(phone));
+    const normalizedEmail = normalizeEmail(email);
+    if (!isValidEmail(normalizedEmail)) {
+      setEmailError(getEmailValidationError(email));
       setShake(true);
       setTimeout(() => setShake(false), 500);
       return;
     }
 
-    const phoneE164 = toE164(phone);
-    if (!phoneE164) {
-      setPhoneError(getPhoneValidationError(phone));
+    if (!goal.trim()) {
       setShake(true);
       setTimeout(() => setShake(false), 500);
       return;
@@ -86,10 +86,10 @@ export function ExitIntentModal() {
     const { error } = await supabase.from("contact_submissions").insert({
       full_name: "Exit Intent Lead",
       business_name: "Pending",
-      phone_number: phoneE164,
+      phone_number: "Not provided",
       trade: "Unknown",
-      email: EXIT_INTENT_EMAIL_PLACEHOLDER,
-      target_city: "Unknown",
+      email: normalizedEmail,
+      target_city: goal,
     });
 
     setLoading(false);
@@ -101,7 +101,8 @@ export function ExitIntentModal() {
       setSubmitted(true);
       setTimeout(() => {
         setIsOpen(false);
-        setPhone("");
+        setEmail("");
+        setGoal("");
         setSubmitted(false);
       }, 2500);
     }
@@ -117,10 +118,10 @@ export function ExitIntentModal() {
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       );
       if (focusable && focusable.length > 0) {
-        // Focus the telephone input first
-        const telInput = modalRef.current?.querySelector<HTMLInputElement>('input[type="tel"]');
-        if (telInput) {
-          telInput.focus();
+        // Focus the first email input
+        const emailInput = modalRef.current?.querySelector<HTMLInputElement>('input[type="email"]');
+        if (emailInput) {
+          emailInput.focus();
         } else {
           focusable[0].focus();
         }
@@ -210,7 +211,7 @@ export function ExitIntentModal() {
                 Don't Miss Out
               </h3>
               <p id="exit-intent-desc" className="text-slate-600 text-sm">
-                Leave your number and we'll send you a free personal video showing exactly where you rank and why.
+                Leave your details and we'll send you a free personal video showing exactly where you rank and why.
               </p>
             </div>
 
@@ -221,24 +222,38 @@ export function ExitIntentModal() {
                 </div>
               )}
 
-              <PhoneInputField
-                id="exit-intent-phone"
-                value={phone}
-                onChange={(next) => {
-                  setPhone(next);
-                  setPhoneError(null);
-                }}
-                compact
-                error={!!phoneError}
-                shake={shake}
-                errorMessage={phoneError}
-                showValidCheck={false}
-                helperText="Include your mobile — country code is selected on the left."
-              />
+              <div>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setEmailError(null);
+                  }}
+                  placeholder={FORM_EMAIL_PLACEHOLDER}
+                  className={`w-full px-4 py-3 rounded-lg border bg-white text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
+                    emailError ? "border-red-400 focus:ring-red-400" : "border-stone-300 focus:ring-amber-400"
+                  } ${shake && emailError ? "animate-shake" : ""}`}
+                  required
+                />
+                {emailError && <p className="mt-1 text-xs text-red-500">{emailError}</p>}
+              </div>
+
+              <div>
+                <textarea
+                  value={goal}
+                  onChange={(e) => setGoal(e.target.value)}
+                  placeholder="What's your main goal? (e.g. more emergency calls)"
+                  required
+                  rows={2}
+                  className={`w-full px-4 py-3 rounded-lg border border-stone-300 bg-white text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all duration-200 resize-none ${shake && !goal.trim() ? "animate-shake border-red-400 focus:ring-red-400" : ""}`}
+                />
+              </div>
+
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-amber-400 hover:bg-amber-300 disabled:bg-amber-300 text-slate-900 font-bold py-3 rounded-lg transition-all duration-200 disabled:cursor-not-allowed"
+                className="w-full bg-amber-400 hover:bg-amber-300 disabled:bg-amber-300 text-slate-900 font-bold py-3 rounded-lg transition-all duration-200 disabled:cursor-not-allowed mt-2"
               >
                 {loading ? "Sending..." : "Send Me the Free Video"}
               </button>
