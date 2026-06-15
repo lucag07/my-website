@@ -7,7 +7,6 @@ import { TrustSignalsStrip } from "./components/TrustSignalsStrip";
 import { MetricsSection } from "./components/MetricsSection";
 import { FAQSection } from "./components/FAQSection";
 import { ProcessSequence } from "./components/ProcessSequence";
-import { AuditFormSection } from "./components/AuditFormSection";
 import { FinalCTAStrip } from "./components/FinalCTAStrip";
 import { StickyHeader } from "./components/StickyHeader";
 import { ExitIntentModal } from "./components/ExitIntentModal";
@@ -27,7 +26,6 @@ function App() {
       <MetricsSection />
       <FAQSection />
       <ProcessSequence />
-      <AuditFormSection />
       <FinalCTAStrip />
       <Footer />
     </div>

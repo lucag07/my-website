@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Phone, Mail } from "lucide-react";
 import {
   BUSINESS_PHONE_DISPLAY,
@@ -14,26 +13,8 @@ interface StickyHeaderProps {
 export function StickyHeader({
   phoneNumber = BUSINESS_PHONE_DISPLAY,
 }: StickyHeaderProps) {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroHeight = window.innerHeight * 0.8;
-      setIsVisible(window.scrollY > heroHeight);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isVisible
-          ? "translate-y-0 opacity-100 backdrop-blur-md"
-          : "-translate-y-full opacity-0"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 translate-y-0 opacity-100 backdrop-blur-md transition-all duration-300">
       <div className="w-full border-b border-slate-800 bg-slate-900/95" style={{ backdropFilter: "blur(12px)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between">
           <div className="flex items-center gap-3">
