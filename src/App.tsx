@@ -1,34 +1,15 @@
-import { HeroSection } from "./components/HeroSection";
-import { RealityCheckSection } from "./components/RealityCheckSection";
-import { HowItWorksSection } from "./components/HowItWorksSection";
-import { WhyNotOthersSection } from "./components/WhyNotOthersSection";
-import { FinancialMathSection } from "./components/FinancialMathSection";
-import { TrustSignalsStrip } from "./components/TrustSignalsStrip";
-import { MetricsSection } from "./components/MetricsSection";
-import { FAQSection } from "./components/FAQSection";
-import { ProcessSequence } from "./components/ProcessSequence";
-import { FinalCTAStrip } from "./components/FinalCTAStrip";
-import { StickyHeader } from "./components/StickyHeader";
-import { ExitIntentModal } from "./components/ExitIntentModal";
-import { Footer } from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import { Landing } from "./pages/Landing";
 
 function App() {
   return (
-    <div className="min-h-screen">
-      <StickyHeader />
-      <ExitIntentModal />
-      <HeroSection />
-      <RealityCheckSection />
-      <HowItWorksSection />
-      <WhyNotOthersSection />
-      <FinancialMathSection />
-      <TrustSignalsStrip />
-      <MetricsSection />
-      <FAQSection />
-      <ProcessSequence />
-      <FinalCTAStrip />
-      <Footer />
-    </div>
+    <Router>
+      <Toaster position="top-right" />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+      </Routes>
+    </Router>
   );
 }
 
