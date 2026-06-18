@@ -10,9 +10,9 @@ const pillars = [
   },
   {
     icon: Award,
-    title: "Built for Plumbers Only",
+    title: "Built for Locksmiths Only",
     description:
-      "We rank plumbing businesses exclusively—emergency, residential, and commercial.",
+      "We rank locksmith businesses exclusively—emergency, residential, and commercial.",
   },
   {
     icon: Shield,

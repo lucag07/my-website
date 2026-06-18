@@ -69,9 +69,9 @@ export function RealityCheckSection() {
                 <div className="w-3 h-3 rounded-full bg-emerald-400" />
                 <span className="text-xs text-stone-400 ml-2">Google Maps results</span>
               </div>
-              <MapPackCard rank={1} name="City Plumbing & Heat" calls={19} active />
-              <MapPackCard rank={2} name="Rapid Response Plumbers" calls={14} active />
-              <MapPackCard rank={3} name="24/7 Local Plumber" calls={11} active />
+              <MapPackCard rank={1} name="City Locksmiths" calls={19} active />
+              <MapPackCard rank={2} name="Rapid Response Locksmiths" calls={14} active />
+              <MapPackCard rank={3} name="24/7 Local Locksmith" calls={11} active />
             </div>
             <div className="mt-3 flex items-center gap-2 text-emerald-600 text-sm font-medium">
               <Phone className="w-4 h-4" />
@@ -91,7 +91,7 @@ export function RealityCheckSection() {
                 <div className="w-3 h-3 rounded-full bg-stone-300" />
                 <span className="text-xs text-stone-400 ml-2">Nobody scrolls this far</span>
               </div>
-              <MapPackCard rank={17} name="Your Plumbing Business" calls={0} active={false} />
+              <MapPackCard rank={17} name="Your Locksmith Business" calls={0} active={false} />
               <div className="h-2 bg-stone-200 rounded" />
               <div className="h-2 bg-stone-200 rounded w-3/4" />
               <div className="h-2 bg-stone-200 rounded w-1/2" />
@@ -105,7 +105,7 @@ export function RealityCheckSection() {
 
         <div className="mt-12 max-w-3xl mx-auto text-center">
           <p className="text-lg md:text-xl text-slate-700 leading-relaxed">
-            When someone searches for a plumber near them, they call one of the
+            When someone searches for a locksmith near them, they call one of the
             top 3. They never scroll to position 17.{" "}
             <span className="font-semibold text-slate-900">
               You already know this because you live it. Now let's fix it.

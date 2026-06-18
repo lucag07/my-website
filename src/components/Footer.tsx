@@ -15,7 +15,7 @@ export function Footer() {
           <div>
             <p className="text-white font-bold text-lg">Tasklumas</p>
             <p className="text-slate-400 text-sm mt-1 max-w-xs leading-relaxed">
-              Google Maps ranking for plumbing businesses across Scotland and the UK.
+              Google Maps ranking for locksmith businesses across Scotland and the UK.
             </p>
             <p className="text-slate-500 text-xs mt-3">
               Founded by{" "}

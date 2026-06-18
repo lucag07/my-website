@@ -98,7 +98,7 @@ export function HeroSection() {
         className={`${isVisible ? "reveal-visible" : "reveal-base"} max-w-5xl mx-auto px-6 py-12 text-center w-full`}
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
-          Top 3 on Google Maps for Plumbers
+          Top 3 on Google Maps for Locksmiths
           <br />
           <span className="text-amber-400">in Your Area.</span>
         </h1>
@@ -108,7 +108,7 @@ export function HeroSection() {
         </p>
 
         <p className="mt-3 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10">
-          We get your plumbing business into the Top 3 in 90 days.
+          We get your locksmith business into the Top 3 in 90 days.
           If you're not there by then, we keep working for free until you are.
         </p>
 

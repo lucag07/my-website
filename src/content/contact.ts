@@ -11,4 +11,4 @@ export const BUSINESS_EMAIL = "luca@tasklumas.com";
 export const EXIT_INTENT_EMAIL_PLACEHOLDER = "exit-intent@submission.local";
 
 /** Example for audit form email field placeholder only. */
-export const FORM_EMAIL_PLACEHOLDER = "you@smithplumbing.com";
+export const FORM_EMAIL_PLACEHOLDER = "you@smithlocksmiths.com";
