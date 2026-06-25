@@ -250,18 +250,6 @@ export function ExitIntentModal() {
               </div>
 
               <div className="text-left">
-                <label className="block text-sm font-semibold text-slate-700 mb-1.5">What's your main goal?</label>
-                <textarea
-                  value={goal}
-                  onChange={(e) => setGoal(e.target.value)}
-                  placeholder="What's your main goal? (e.g. more emergency calls)"
-                  required
-                  rows={2}
-                  className={`w-full px-4 py-3 rounded-lg border border-stone-300 bg-white text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all duration-200 resize-none ${shake && !goal.trim() ? "animate-shake border-red-400 focus:ring-red-400" : ""}`}
-                />
-              </div>
-
-              <div className="text-left">
                 <label className="block text-sm font-semibold text-slate-700 mb-1.5">Your Website</label>
                 <input
                   type="url"
@@ -270,6 +258,18 @@ export function ExitIntentModal() {
                   placeholder="https://www.example.com"
                   required
                   className={`w-full px-4 py-3 rounded-lg border border-stone-300 bg-white text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all duration-200 ${shake && !website.trim() ? "animate-shake border-red-400 focus:ring-red-400" : ""}`}
+                />
+              </div>
+
+              <div className="text-left">
+                <label className="block text-sm font-semibold text-slate-700 mb-1.5">What's your main goal?</label>
+                <textarea
+                  value={goal}
+                  onChange={(e) => setGoal(e.target.value)}
+                  placeholder="What's your main goal? (e.g. more emergency calls)"
+                  required
+                  rows={2}
+                  className={`w-full px-4 py-3 rounded-lg border border-stone-300 bg-white text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all duration-200 resize-none ${shake && !goal.trim() ? "animate-shake border-red-400 focus:ring-red-400" : ""}`}
                 />
               </div>
 

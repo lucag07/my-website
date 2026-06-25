@@ -155,19 +155,6 @@ export function HeroSection() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-1.5">What's your main goal?</label>
-                <textarea
-                  name="goal"
-                  required
-                  rows={2}
-                  value={form.goal}
-                  onChange={handleChange}
-                  placeholder="e.g., More emergency calls, better rankings..."
-                  className={`${inputClasses("goal")} resize-none`}
-                />
-              </div>
-
-              <div>
                 <label className="block text-sm font-semibold text-slate-300 mb-1.5">Your Website</label>
                 <input
                   type="url"
@@ -177,6 +164,19 @@ export function HeroSection() {
                   onChange={handleChange}
                   placeholder="https://www.example.com"
                   className={inputClasses("website")}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-slate-300 mb-1.5">What's your main goal?</label>
+                <textarea
+                  name="goal"
+                  required
+                  rows={2}
+                  value={form.goal}
+                  onChange={handleChange}
+                  placeholder="e.g., More emergency calls, better rankings..."
+                  className={`${inputClasses("goal")} resize-none`}
                 />
               </div>
 

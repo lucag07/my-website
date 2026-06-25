@@ -211,30 +211,6 @@ export function AuditFormSection() {
 
               <div className="relative">
                 <label
-                  htmlFor="audit-target-city"
-                  className="block text-sm font-semibold text-slate-700 mb-1.5"
-                >
-                  Where do you want to rank?
-                </label>
-                <div className="relative">
-                  <input
-                    id="audit-target-city"
-                    type="text"
-                    name="target_city"
-                    required
-                    value={form.target_city}
-                    onChange={handleChange}
-                    placeholder="Edinburgh"
-                    className={inputClasses("target_city")}
-                  />
-                  {validateField("target_city", form.target_city) && (
-                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
-                  )}
-                </div>
-              </div>
-
-              <div className="relative">
-                <label
                   htmlFor="audit-website"
                   className="block text-sm font-semibold text-slate-700 mb-1.5"
                 >
@@ -252,6 +228,30 @@ export function AuditFormSection() {
                     className={inputClasses("website")}
                   />
                   {validateField("website", form.website) && (
+                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                  )}
+                </div>
+              </div>
+
+              <div className="relative">
+                <label
+                  htmlFor="audit-target-city"
+                  className="block text-sm font-semibold text-slate-700 mb-1.5"
+                >
+                  Where do you want to rank?
+                </label>
+                <div className="relative">
+                  <input
+                    id="audit-target-city"
+                    type="text"
+                    name="target_city"
+                    required
+                    value={form.target_city}
+                    onChange={handleChange}
+                    placeholder="Edinburgh"
+                    className={inputClasses("target_city")}
+                  />
+                  {validateField("target_city", form.target_city) && (
                     <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
                   )}
                 </div>
