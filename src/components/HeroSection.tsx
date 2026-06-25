@@ -187,6 +187,9 @@ export function HeroSection() {
               >
                 {loading ? "Sending..." : "Get Your Free Video"}
               </button>
+              <p className="text-center text-slate-400 text-xs font-medium pt-2">
+                We respond within 4 hours.
+              </p>
             </form>
           )}
         </div>

@@ -51,15 +51,15 @@ export function FinancialMathSection() {
                 <tbody className="divide-y divide-stone-100">
                   <tr>
                     <td className="px-4 py-3 text-slate-600">Slate Roof Repair</td>
-                    <td className="px-4 py-3 text-emerald-600 font-medium text-right">£250 - £1,800</td>
+                    <td className="px-4 py-3 text-emerald-600 font-medium text-right">£150 - £1,200</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3 text-slate-600">Flat Roof Replacement</td>
-                    <td className="px-4 py-3 text-emerald-600 font-medium text-right">£1,200 - £6,000</td>
+                    <td className="px-4 py-3 text-emerald-600 font-medium text-right">£800 - £4,500</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3 text-slate-900 font-medium">Full Slate Roof Replacement</td>
-                    <td className="px-4 py-3 text-emerald-600 font-bold text-right">£9,000 - £22,000+</td>
+                    <td className="px-4 py-3 text-emerald-600 font-bold text-right">£7,000 - £18,000+</td>
                   </tr>
                 </tbody>
               </table>

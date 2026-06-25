@@ -5,7 +5,6 @@ const metrics = [
   { value: 70, suffix: "%", label: "of Local Calls Go to the Top 3" },
   { value: 90, suffix: "-Day", label: "Average to Results" },
   { value: 3, suffix: " Top", label: "Positions Targeted" },
-  { value: 4, suffix: "-Hour", label: "Response Time" },
 ];
 
 function AnimatedCounter({
