@@ -15,7 +15,7 @@ const steps = [
     number: "02",
     title: "We Get You Ranked",
     description:
-      "Our systems put your roofer business in the Top 3 on Google Maps for those target areas.",
+      "We manually fix the obvious gaps for a big ranking bump in the first 4-6 weeks. Then we handle the longer-term on-site SEO and citations to secure your Top 3 spot.",
   },
   {
     icon: Phone,
