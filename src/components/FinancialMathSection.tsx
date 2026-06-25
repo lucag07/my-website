@@ -33,13 +33,39 @@ export function FinancialMathSection() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
               The Maths Is Simple
             </h2>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              One emergency call-out or boiler install pays for this service for months.{" "}
+            <p className="text-lg text-slate-600 leading-relaxed mb-6">
+              In Scotland, just one flat roof replacement or a couple of slate repairs pays for this service for months. A full slate roof replacement pays for it for years.{" "}
               <span className="font-semibold text-slate-900">
                 Every job after that is pure profit. That's the deal.
               </span>
             </p>
-            <div className="mt-8 flex items-center gap-3 bg-emerald-50 border border-emerald-200 rounded-lg px-5 py-4">
+
+            <div className="bg-white rounded-xl border border-stone-200 overflow-hidden mb-8 shadow-sm">
+              <table className="w-full text-left text-sm md:text-base">
+                <thead className="bg-stone-50 border-b border-stone-200">
+                  <tr>
+                    <th className="px-4 py-3 font-semibold text-slate-700">Scottish Roofing Job</th>
+                    <th className="px-4 py-3 font-semibold text-slate-700 text-right">Average Value</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-stone-100">
+                  <tr>
+                    <td className="px-4 py-3 text-slate-600">Slate Roof Repair</td>
+                    <td className="px-4 py-3 text-emerald-600 font-medium text-right">£250 - £1,800</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 text-slate-600">Flat Roof Replacement</td>
+                    <td className="px-4 py-3 text-emerald-600 font-medium text-right">£1,200 - £6,000</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 text-slate-900 font-medium">Full Slate Roof Replacement</td>
+                    <td className="px-4 py-3 text-emerald-600 font-bold text-right">£9,000 - £22,000+</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="flex items-center gap-3 bg-emerald-50 border border-emerald-200 rounded-lg px-5 py-4">
               <div className="w-2 h-2 rounded-full bg-emerald-500" />
               <p className="text-sm text-emerald-800 font-medium">
                 We don't stop until you're ranked.
