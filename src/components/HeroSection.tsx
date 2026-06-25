@@ -16,6 +16,7 @@ export function HeroSection() {
     full_name: "",
     email: "",
     goal: "",
+    website: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -64,6 +65,7 @@ export function HeroSection() {
       phone_number: "Not provided",
       email,
       target_city: form.goal,
+      website: form.website,
     });
 
     setLoading(false);
@@ -162,6 +164,19 @@ export function HeroSection() {
                   onChange={handleChange}
                   placeholder="e.g., More emergency calls, better rankings..."
                   className={`${inputClasses("goal")} resize-none`}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-slate-300 mb-1.5">Your Website</label>
+                <input
+                  type="url"
+                  name="website"
+                  required
+                  value={form.website}
+                  onChange={handleChange}
+                  placeholder="https://www.example.com"
+                  className={inputClasses("website")}
                 />
               </div>
 
