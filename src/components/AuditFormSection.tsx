@@ -19,6 +19,7 @@ export function AuditFormSection() {
     full_name: "",
     email: "",
     target_city: "",
+    website: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,6 +76,7 @@ export function AuditFormSection() {
       phone_number: null,
       email,
       target_city: form.target_city,
+      website: form.website,
     });
 
     setLoading(false);
@@ -226,6 +228,30 @@ export function AuditFormSection() {
                     className={inputClasses("target_city")}
                   />
                   {validateField("target_city", form.target_city) && (
+                    <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
+                  )}
+                </div>
+              </div>
+
+              <div className="relative">
+                <label
+                  htmlFor="audit-website"
+                  className="block text-sm font-semibold text-slate-700 mb-1.5"
+                >
+                  Your Website
+                </label>
+                <div className="relative">
+                  <input
+                    id="audit-website"
+                    type="url"
+                    name="website"
+                    required
+                    value={form.website}
+                    onChange={handleChange}
+                    placeholder="https://www.example.com"
+                    className={inputClasses("website")}
+                  />
+                  {validateField("website", form.website) && (
                     <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
                   )}
                 </div>
