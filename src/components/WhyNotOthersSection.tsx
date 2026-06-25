@@ -4,27 +4,27 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 const options = [
   {
     type: "bad",
-    title: "1. Do It Yourself (DIY) Marketing",
+    title: "1. Do It Yourself (DIY)",
     description:
-      "Doing all the marketing yourself is overwhelming and time-consuming. You're already busy running the business, so marketing gets dropped the moment an emergency job comes in.",
+      "Doing the marketing yourself is a massive headache. You're too busy running the business, so marketing is the first thing that gets dropped when an emergency job comes in.",
   },
   {
     type: "bad",
-    title: "2. Hiring In-House Staff",
+    title: "2. Hiring Full-Time Staff",
     description:
-      "Putting someone on payroll involves massive risk. Between salary, taxes, and onboarding, hiring the wrong person can be incredibly costly and time-consuming.",
+      "Putting someone on the payroll is a big risk. By the time you pay their wage, deal with taxes, and train them up, hiring the wrong person can cost you thousands.",
   },
   {
     type: "bad",
-    title: "3. Hiring a General Agency",
+    title: "3. Hiring a Big Agency",
     description:
-      "While it can work, smaller businesses often end up with less attention and lower priority, handled by junior or inexperienced staff. You get monthly reports full of vanity numbers instead of actual results.",
+      "You could hire a general marketing agency, but you'll likely be handed off to a junior worker. Instead of actual phone calls, you just get confusing monthly reports full of numbers that don't mean anything.",
   },
   {
     type: "good",
     title: "4. Work with Tasklumas",
     description:
-      "We offer a unique solution built just for roofers. We share the risk by guaranteeing our results, so we're highly motivated to deliver. No generic claims, no guesswork—just a clear focus on getting you to the top and making your phone ring.",
+      "We do one thing: we get roofers to the top of Google. We guarantee our results, so we take on the risk. No fluff, no guesswork—just a clear focus on making your phone ring with real jobs.",
   },
 ];
 
@@ -43,10 +43,10 @@ export function WhyNotOthersSection() {
           </h2>
           <div className="space-y-4 text-lg text-slate-600">
             <p>
-              But right now, you're facing a frustrating reality: you know that climbing to the top of Google will completely transform your business and bring in consistent, high-paying jobs. 
+              But right now, you're stuck. You know that getting to the top of Google will change your business and bring in great jobs every week. 
             </p>
             <p>
-              The problem is, you're already stretched thin managing your team, quoting jobs, and putting out daily fires. The last thing you have time for is figuring out complicated marketing strategies, SEO updates, or how algorithms work. It's painful to watch competitors—who might not even be as good as you—get the best calls simply because they rank higher.
+              The problem is, you're already flat out. Between managing your team, pricing jobs, and putting out daily fires, you have no time to learn complex marketing tricks or figure out Google's rules. It hurts to watch other roofers—who aren't even as good as you—get all the best calls just because they rank higher.
             </p>
           </div>
         </div>
