@@ -26,7 +26,7 @@ const faqs = [
   {
     question: "Do you work with trades other than roofers?",
     answer:
-      "No. We only work with roofer businesses—auto roofers, emergency roofers, safe engineers, and general roofers who serve a defined local area. That focus is what lets us deliver strong Map Pack results for your niche. If you're not a roofer, we're not the right fit.",
+      "No. We only work with roofing businesses—slate roof specialists, emergency roofers, flat roofing experts, and general roofers who serve a defined local area. That focus is what lets us deliver strong Map Pack results for your niche. If you're not a roofer, we're not the right fit.",
   },
   {
     question: "I've been burned by SEO agencies before—why should I trust you?",
@@ -41,17 +41,17 @@ const faqs = [
   {
     question: "How is this different from Checkatrade, Bark, or shared lead sites?",
     answer:
-      "Shared lead platforms sell the same enquiry to several roofers—you're racing to quote and paying per lead whether you win the job or not. Map Pack rankings send exclusive calls to your business: the customer chose you from Google and dialled your number. You're building an asset you own, not renting access to someone else's marketplace.",
+      "Shared lead platforms sell the same enquiry to several roofers—you're racing to quote and paying per lead whether you win the job or not. Map Pack rankings (those Top 3 spots on the Google Map) send exclusive calls to your business: the customer chose you straight from Google and dialled your number. You're building an asset you own, not renting access to someone else's marketplace.",
   },
   {
     question: "What do I actually get when I sign up?",
     answer:
-      "We record a personal video — usually 4–5 minutes — and send it straight to you. No call, no meeting. We walk through where you rank right now, show you exactly who's above you and why they're winning, and explain what's blocking your calls. You'll leave with a clear picture of what needs fixing, even if you never work with us.",
+      "We record a personal video — usually 3–4 minutes — and send it straight to you. No call, no meeting. We walk through where you rank right now, show you exactly who's above you and why they're winning, and explain what's blocking your calls. You'll leave with a clear picture of what needs fixing, even if you never work with us.",
   },
   {
     question: "What if a competitor is already #1 in my town?",
     answer:
-      "Someone will hold those spots—that's exactly why inaction costs you. We analyse why they're winning (reviews, categories, proximity, content) and whether the gap is closable in 90 days. Sometimes the leader is beatable quickly; sometimes we recommend a neighbouring postcode first. You'll get a realistic plan, not a promise we can't keep.",
+      "Someone will hold those spots—that's exactly why inaction costs you. We analyse why they're winning (reviews, categories, proximity, content) and whether the gap is closable in 90 days. You'll get a realistic plan, not a promise we can't keep.",
   },
   {
     question: "What if I'm already ranking?",
