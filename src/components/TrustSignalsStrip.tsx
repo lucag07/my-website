@@ -6,13 +6,12 @@ const pillars = [
   {
     icon: MapPin,
     title: "Based in Dundee, Scotland",
-    description: "We're a local UK business, not a faceless overseas agency. We understand the market.",
+    description: "We're a local Scottish business, not a faceless overseas agency. We understand the market.",
   },
   {
     icon: Award,
     title: "Built for Roofers Only",
-    description:
-      "We rank roofer businesses exclusively—emergency, residential, and commercial.",
+    description: "We work just with roofers.",
   },
   {
     icon: Shield,
