@@ -24,7 +24,7 @@ const options = [
     type: "good",
     title: "4. Work with Tasklumas",
     description:
-      "We offer a unique solution built just for locksmiths. We share the risk by guaranteeing our results, so we're highly motivated to deliver. No generic claims, no guesswork—just a clear focus on getting you to the top and making your phone ring.",
+      "We offer a unique solution built just for roofers. We share the risk by guaranteeing our results, so we're highly motivated to deliver. No generic claims, no guesswork—just a clear focus on getting you to the top and making your phone ring.",
   },
 ];
 
@@ -55,7 +55,7 @@ export function WhyNotOthersSection() {
           You Have Four Options
         </h3>
         <p className="text-slate-500 text-center mb-12">
-          Every locksmith trying to get more calls from Google faces the same choice.
+          Every roofer trying to get more calls from Google faces the same choice.
         </p>
 
         <div className="space-y-4">

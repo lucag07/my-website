@@ -23,7 +23,7 @@ export function FinalCTAStrip({
         className={`${isVisible ? "reveal-visible" : "reveal-base"} max-w-5xl mx-auto px-6 text-center`}
       >
         <p className="text-xl md:text-2xl font-bold text-white mb-4 leading-snug">
-          Other locksmiths at the top of Google Maps aren't waiting.{" "}
+          Other roofers at the top of Google Maps aren't waiting.{" "}
           <span className="text-amber-400">Neither should you.</span>
         </p>
         <p className="text-slate-400 text-sm mb-8">

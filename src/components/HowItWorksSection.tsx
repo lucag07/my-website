@@ -8,21 +8,21 @@ const steps = [
     number: "01",
     title: "We Map It Out Together",
     description:
-      "We choose the postcodes and search terms that bring you the highest-paying locksmith jobs.",
+      "We choose the postcodes and search terms that bring you the highest-paying roofer jobs.",
   },
   {
     icon: TrendingUp,
     number: "02",
     title: "We Get You Ranked",
     description:
-      "Our systems put your locksmith business in the Top 3 on Google Maps for those target areas.",
+      "Our systems put your roofer business in the Top 3 on Google Maps for those target areas.",
   },
   {
     icon: Phone,
     number: "03",
     title: "Your Phone Rings",
     description:
-      "Direct, exclusive calls come straight to you. Not shared leads, not tyre-kickers. Real locksmith jobs.",
+      "Direct, exclusive calls come straight to you. Not shared leads, not tyre-kickers. Real roofer jobs.",
   },
 ];
 

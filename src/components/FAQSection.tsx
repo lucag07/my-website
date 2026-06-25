@@ -21,17 +21,17 @@ const faqs = [
   {
     question: 'What exactly does "Top 3" mean for my area?',
     answer:
-      "When someone searches 'locksmith near me' or 'emergency locksmith [town]' on Google, they see a map with three businesses listed underneath it. Those are the Top 3 — and they get almost all the calls. We get your business into those three spots for the searches that matter in your area. Before you commit, we'll tell you exactly which searches we're targeting so you know precisely what you're paying for.",
+      "When someone searches 'roofer near me' or 'emergency roofer [town]' on Google, they see a map with three businesses listed underneath it. Those are the Top 3 — and they get almost all the calls. We get your business into those three spots for the searches that matter in your area. Before you commit, we'll tell you exactly which searches we're targeting so you know precisely what you're paying for.",
   },
   {
-    question: "Do you work with trades other than locksmiths?",
+    question: "Do you work with trades other than roofers?",
     answer:
-      "No. We only work with locksmith businesses—auto locksmiths, emergency locksmiths, safe engineers, and general locksmiths who serve a defined local area. That focus is what lets us deliver strong Map Pack results for your niche. If you're not a locksmith, we're not the right fit.",
+      "No. We only work with roofer businesses—auto roofers, emergency roofers, safe engineers, and general roofers who serve a defined local area. That focus is what lets us deliver strong Map Pack results for your niche. If you're not a roofer, we're not the right fit.",
   },
   {
     question: "I've been burned by SEO agencies before—why should I trust you?",
     answer:
-      "Fair question. Most agencies send you monthly reports full of numbers that don't mean anything — impressions, clicks, traffic. We only care about one thing: are you in the Top 3 on Google Maps? You can check that yourself right now by searching 'locksmith near me' on your phone. You either are or you aren't. You'll have one person to contact, clear targets, and if we don't think we can win in your area, we'll say so in your free video before you spend a penny.",
+      "Fair question. Most agencies send you monthly reports full of numbers that don't mean anything — impressions, clicks, traffic. We only care about one thing: are you in the Top 3 on Google Maps? You can check that yourself right now by searching 'roofer near me' on your phone. You either are or you aren't. You'll have one person to contact, clear targets, and if we don't think we can win in your area, we'll say so in your free video before you spend a penny.",
   },
   {
     question: "Is this black hat? Will Google suspend my profile?",
@@ -41,7 +41,7 @@ const faqs = [
   {
     question: "How is this different from Checkatrade, Bark, or shared lead sites?",
     answer:
-      "Shared lead platforms sell the same enquiry to several locksmiths—you're racing to quote and paying per lead whether you win the job or not. Map Pack rankings send exclusive calls to your business: the customer chose you from Google and dialled your number. You're building an asset you own, not renting access to someone else's marketplace.",
+      "Shared lead platforms sell the same enquiry to several roofers—you're racing to quote and paying per lead whether you win the job or not. Map Pack rankings send exclusive calls to your business: the customer chose you from Google and dialled your number. You're building an asset you own, not renting access to someone else's marketplace.",
   },
   {
     question: "What do I actually get when I sign up?",
@@ -56,7 +56,7 @@ const faqs = [
   {
     question: "What if I'm already ranking?",
     answer:
-      "Good start—but most locksmiths only rank in their immediate town while missing neighbouring areas where the same customers search. We expand coverage across multiple postcodes and tighten your profile so you hold Top 3 in more high-intent searches, not just one lucky keyword.",
+      "Good start—but most roofers only rank in their immediate town while missing neighbouring areas where the same customers search. We expand coverage across multiple postcodes and tighten your profile so you hold Top 3 in more high-intent searches, not just one lucky keyword.",
   },
   {
     question: "Do I need hundreds of 5-star reviews first?",
@@ -66,7 +66,7 @@ const faqs = [
   {
     question: "Can you target multiple towns, or just one postcode?",
     answer:
-      "Yes. Most locksmiths want to rank in more than one town and that's completely doable. The more areas you want to rank in, the more work involved, which may affect pricing — we'll go through that with you after your free video. One thing we won't do is target areas you don't actually cover. Google can tell, and it works against you.",
+      "Yes. Most roofers want to rank in more than one town and that's completely doable. The more areas you want to rank in, the more work involved, which may affect pricing — we'll go through that with you after your free video. One thing we won't do is target areas you don't actually cover. Google can tell, and it works against you.",
   },
   {
     question: "What's the deal if I don't rank in 90 days?",
@@ -74,9 +74,9 @@ const faqs = [
       "We keep working for free until you're in the Top 3. Simple as that. We only take clients we're confident we can rank — that's why we do a free video check first.",
   },
   {
-    question: "Will you work with other locksmiths in my area?",
+    question: "Will you work with other roofers in my area?",
     answer:
-      "No. Once we take you on, we won't work with any competing locksmith in your area. That would be pointless — we'd just be fighting against ourselves. You get exclusivity for your area for as long as we're working together.",
+      "No. Once we take you on, we won't work with any competing roofer in your area. That would be pointless — we'd just be fighting against ourselves. You get exclusivity for your area for as long as we're working together.",
   },
   {
     question: "Do I need to do anything on my end?",
@@ -134,7 +134,7 @@ export function FAQSection() {
           Frequently Asked Questions
         </h2>
         <p className="text-slate-600 text-center mb-12">
-          Straight answers for locksmith business owners before you apply.
+          Straight answers for roofer business owners before you apply.
         </p>
 
         <div className="space-y-4">
