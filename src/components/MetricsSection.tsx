@@ -72,7 +72,7 @@ export function MetricsSection() {
         ref={ref}
         className={`${isVisible ? "reveal-visible" : "reveal-base"} max-w-6xl mx-auto px-6`}
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24">
           {metrics.map((metric) => (
             <div key={metric.label} className="text-center">
               <AnimatedCounter end={metric.value} suffix={metric.suffix} />

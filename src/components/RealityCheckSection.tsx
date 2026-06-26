@@ -82,7 +82,7 @@ export function RealityCheckSection() {
           <div>
             <div className="inline-flex items-center gap-2 bg-stone-200 text-stone-500 text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
               <PhoneOff className="w-3.5 h-3.5" />
-              You — buried at position 17
+              You — buried at position 10
             </div>
             <div className="bg-stone-50 rounded-xl p-5 border border-stone-200 space-y-3">
               <div className="flex items-center gap-2 mb-2">
@@ -91,7 +91,7 @@ export function RealityCheckSection() {
                 <div className="w-3 h-3 rounded-full bg-stone-300" />
                 <span className="text-xs text-stone-400 ml-2">Nobody scrolls this far</span>
               </div>
-              <MapPackCard rank={17} name="Your Roofer Business" calls={0} active={false} />
+              <MapPackCard rank={10} name="Your Roofer Business" calls={0} active={false} />
               <div className="h-2 bg-stone-200 rounded" />
               <div className="h-2 bg-stone-200 rounded w-3/4" />
               <div className="h-2 bg-stone-200 rounded w-1/2" />
@@ -106,7 +106,7 @@ export function RealityCheckSection() {
         <div className="mt-12 max-w-3xl mx-auto text-center">
           <p className="text-lg md:text-xl text-slate-700 leading-relaxed">
             When someone searches for a roofer near them, they call one of the
-            top 3. They never scroll to position 17.{" "}
+            top 3. They never scroll to position 10.{" "}
             <span className="font-semibold text-slate-900">
               You already know this because you live it. Now let's fix it.
             </span>
