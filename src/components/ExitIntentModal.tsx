@@ -257,6 +257,7 @@ export function ExitIntentModal() {
                   required
                   className={`w-full px-4 py-3 rounded-lg border border-stone-300 bg-white text-slate-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all duration-200 ${shake && !website.trim() ? "animate-shake border-red-400 focus:ring-red-400" : ""}`}
                 />
+                <p className="mt-1.5 text-xs text-slate-500 font-medium">Please include https://</p>
               </div>
 
               <div className="text-left">

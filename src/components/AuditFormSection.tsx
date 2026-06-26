@@ -231,6 +231,7 @@ export function AuditFormSection() {
                     <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-500" />
                   )}
                 </div>
+                <p className="mt-1.5 text-xs text-slate-500 font-medium">Please include https://</p>
               </div>
 
               <div className="relative">

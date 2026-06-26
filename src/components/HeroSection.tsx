@@ -164,6 +164,7 @@ export function HeroSection() {
                   placeholder="https://www.example.com"
                   className={inputClasses("website")}
                 />
+                <p className="mt-1.5 text-xs text-slate-400 font-medium">Please include https://</p>
               </div>
 
               <div>
