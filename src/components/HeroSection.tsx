@@ -59,13 +59,12 @@ export function HeroSection() {
 
     setLoading(true);
 
-    const { error } = await supabase.from("contact_submissions").insert({
+    const { error } = await supabase.from("leads").insert({
       full_name: form.full_name,
-      business_name: "Pending",
-      phone_number: "Not provided",
       email,
-      target_city: form.goal,
       website: form.website,
+      main_goal: form.goal,
+      source: "hero",
     });
 
     setLoading(false);

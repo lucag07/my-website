@@ -90,14 +90,12 @@ export function ExitIntentModal() {
 
     setLoading(true);
 
-    const { error } = await supabase.from("contact_submissions").insert({
-      full_name: "Exit Intent Lead",
-      business_name: "Pending",
-      phone_number: "Not provided",
-      trade: "Unknown",
+    const { error } = await supabase.from("leads").insert({
+      full_name: null,
       email: normalizedEmail,
-      target_city: goal,
       website: website,
+      main_goal: goal,
+      source: "popup",
     });
 
     setLoading(false);
