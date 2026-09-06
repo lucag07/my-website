@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 import {
   BUSINESS_PHONE_DISPLAY,
   BUSINESS_PHONE_TEL,
@@ -57,8 +58,15 @@ export function Footer() {
 
         </div>
 
-        <div className="mt-8 pt-6 border-t border-slate-800 text-xs text-slate-600 text-center">
-          © {new Date().getFullYear()} Tasklumas. All rights reserved.
+        <div className="mt-8 pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600">
+          <div>
+            © {new Date().getFullYear()} Tasklumas. All rights reserved.
+          </div>
+          <div className="flex gap-6">
+            <Link to="/locations" className="hover:text-amber-400 transition-colors">
+              Areas We Serve
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

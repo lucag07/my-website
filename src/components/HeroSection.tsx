@@ -5,7 +5,7 @@ import { supabase } from "../lib/supabase";
 import { isValidEmail, normalizeEmail, getEmailValidationError } from "../lib/email/validate";
 import { FORM_EMAIL_PLACEHOLDER } from "../content/contact";
 
-export function HeroSection() {
+export function HeroSection({ cityName }: { cityName?: string }) {
   const { ref, isVisible } = useScrollReveal();
   
   const [submitted, setSubmitted] = useState(false);
@@ -101,7 +101,7 @@ export function HeroSection() {
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
           Top 3 on Google Maps for Roofers
           <br />
-          <span className="text-amber-400">in Your Area.</span>
+          <span className="text-amber-400">in {cityName || "Your Area"}.</span>
         </h1>
 
         <p className="mt-6 text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
