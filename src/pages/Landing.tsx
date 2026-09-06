@@ -7,7 +7,6 @@ import { TrustSignalsStrip } from "../components/TrustSignalsStrip";
 import { MetricsSection } from "../components/MetricsSection";
 import { FAQSection } from "../components/FAQSection";
 import { ProcessSequence } from "../components/ProcessSequence";
-import { LocationsSection } from "../components/LocationsSection";
 import { FinalCTAStrip } from "../components/FinalCTAStrip";
 import { StickyHeader } from "../components/StickyHeader";
 import { ExitIntentModal } from "../components/ExitIntentModal";
@@ -27,7 +26,6 @@ export function Landing() {
       <MetricsSection />
       <FAQSection />
       <ProcessSequence />
-      <LocationsSection />
       <FinalCTAStrip />
       <Footer />
     </div>
