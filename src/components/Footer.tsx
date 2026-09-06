@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin } from "lucide-react";
 import {
   BUSINESS_PHONE_DISPLAY,
   BUSINESS_PHONE_TEL,
@@ -17,11 +17,20 @@ export function Footer() {
             <p className="text-slate-400 text-sm mt-1 max-w-xs leading-relaxed">
               Google Maps ranking for roofer businesses across Scotland.
             </p>
-            <p className="text-slate-500 text-xs mt-3">
+            <p className="text-slate-500 text-xs mt-3 mb-4">
               Founded by{" "}
               <span className="text-slate-300 font-medium">Luca Gasparini</span>
               {" "}— Local Search Specialist
             </p>
+            <a
+              href="https://www.linkedin.com/in/luca-gasparini-3a4818417/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-all duration-300 text-sm font-medium border border-[#0A66C2]/20 hover:border-[#0A66C2]"
+            >
+              <Linkedin className="w-4 h-4" />
+              Connect on LinkedIn
+            </a>
           </div>
 
           {/* NAP */}
